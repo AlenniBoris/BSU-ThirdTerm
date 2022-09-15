@@ -2,123 +2,102 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class task14 {
-
-    public static ArrayList<ArrayList<Integer>> inputMatrixArrayList() {
-        Scanner in = new Scanner(System.in);
-        ArrayList<String> rows = new ArrayList<>();
-        while (in.hasNextLine()) {
-            String row = in.nextLine();
-            if (row.equals(""))
+    public static boolean isMagicSquare(){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> lines = new ArrayList<>();
+        while(sc.hasNextLine()){
+            String line = sc.nextLine();
+            if (line.equals("")){
                 break;
-
-            rows.add(row);
-        }
-
-        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
-
-        for (int i = 0; i < rows.size(); ++i) {
-            ArrayList<Integer> newRow = new ArrayList<>();
-            String[] numbers = rows.get(i).split(" ");
-            for (int j = 0; j < rows.size(); ++j) {
-                newRow.add(Integer.parseInt(numbers[j]));
             }
-            matrix.add(newRow);
-        }
-        return matrix;
-    }
-
-    public static int[][] inputMatrixArray() {
-        Scanner in = new Scanner(System.in);
-        ArrayList<String> rows = new ArrayList<>();
-        while (in.hasNextLine()) {
-            String row = in.nextLine();
-            if (row.equals(""))
-                break;
-
-            rows.add(row);
+            lines.add(line);
         }
 
-        int[][] matrix = new int[rows.size()][];
+        int [][] square = new int[lines.size()][];
         int k = 0;
-        for (int i = 0; i < rows.size(); ++i) {
-            int[] newRow = new int[rows.size()];
-            String[] numbers = rows.get(i).split(" ");
-            for (int j = 0; j < rows.size(); ++j) {
+        for (int i = 0; i < lines.size(); ++i) {
+            int[] newRow = new int[lines.size()];
+            String[] numbers = lines.get(i).split(" ");
+            for (int j = 0; j < lines.size(); ++j) {
                 newRow[j] = (Integer.parseInt(numbers[j]));
             }
-            matrix[k++] = newRow;
+            square[k++] = newRow;
         }
 
-        return matrix;
-    }
-
-    public static boolean isMagicSquareArrayList(ArrayList<ArrayList<Integer>> matrix) {
-
-        for (int i = 0; i < matrix.size() - 1; ++i) {
-            int previousRow = 0;
-            int row = 0;
-
-            int previousColumn = 0;
-            int column = 0;
-
-            int mainDiagonal = 0;
-            int sideDiagonal = 0;
-            for (int j = 0; j < matrix.get(i).size(); ++j) {
-                previousRow += matrix.get(i).get(j);
-                row += matrix.get(i + 1).get(j);
-
-                previousColumn += matrix.get(j).get(i);
-                column += matrix.get(j).get(i + 1);
-
-                mainDiagonal += matrix.get(j).get(j);
-                sideDiagonal += matrix.get(2 - j).get(2 - j);
+        for (int i = 0; i < square.length - 1; i++) {
+            int prevLine = 0, nowLine = 0;
+            int prevCol= 0, nowCol = 0;
+            int mainDiag = 0, revDiag = 0;
+            for (int j = 0; j < square[i].length; j++) {
+                prevLine += square[i][j];
+                nowLine += square[i+1][j];
+                prevCol += square[j][i];
+                nowCol += square[j+1][i];
+                mainDiag += square[j][j];
+                revDiag += square[2-j][2-j];
             }
-
-            if (row != previousRow)
+            if (prevCol != nowCol){
                 return false;
-            if (column != previousColumn)
-                return false;
-            if (mainDiagonal != sideDiagonal)
-                return false;
-            if (row != column || row != mainDiagonal)
-                return false;
-        }
-
-        return true;
-    }
-
-    public static boolean isMagicSquareArray(int[][] matrix) {
-
-        for (int i = 0; i < matrix.length - 1; ++i) {
-            int previousRow = 0;
-            int row = 0;
-
-            int previousColumn = 0;
-            int column = 0;
-
-            int mainDiagonal = 0;
-            int sideDiagonal = 0;
-            for (int j = 0; j < matrix[i].length; ++j) {
-                previousRow += matrix[i][j];
-                row += matrix[i + 1][j];
-
-                previousColumn += matrix[j][i];
-                column += matrix[j][i + 1];
-
-                mainDiagonal += matrix[j][j];
-                sideDiagonal += matrix[2 - j][2 - j];
             }
+            if (prevLine != nowLine){
+                return false;
+            }
+            if (mainDiag != revDiag){
+                return false;
+            }
+            if (nowLine != nowCol || nowLine != mainDiag){
+                return false;
+            }
+        }
+        return  true;
+    }
 
-            if (row != previousRow)
-                return false;
-            if (column != previousColumn)
-                return false;
-            if (mainDiagonal != sideDiagonal)
-                return false;
-            if (row != column || row != mainDiagonal)
-                return false;
+    public static boolean isMagicSquareList(){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> lines = new ArrayList<>();
+        while(sc.hasNextLine()){
+            String line = sc.nextLine();
+            if (line.equals("")){
+                break;
+            }
+            lines.add(line);
+        }
+        ArrayList<ArrayList<Integer>> square = new ArrayList<>();
+        for (int i = 0; i < lines.size(); ++i) {
+            ArrayList<Integer> newRow = new ArrayList<>();
+            String[] numbers = lines.get(i).split(" ");
+            for (int j = 0; j < lines.size(); ++j) {
+                newRow.add(Integer.parseInt(numbers[j]));
+            }
+            square.add(newRow);
         }
 
-        return true;
+        for (int i = 0; i < square.size() - 1; i++) {
+            int prevLine = 0, nowLine = 0;
+            int prevCol= 0, nowCol = 0;
+            int mainDiag = 0, revDiag = 0;
+            for (int j = 0; j < square.get(i).size(); j++) {
+                prevLine += square.get(i).get(j);
+                nowLine += square.get(i+1).get(j);
+                prevCol += square.get(j).get(i);
+                nowCol += square.get(j+1).get(i);
+                mainDiag += square.get(j).get(j);
+                revDiag += square.get(2-j).get(2-j);
+            }
+            if (prevCol != nowCol){
+                return false;
+            }
+            if (prevLine != nowLine){
+                return false;
+            }
+            if (mainDiag != revDiag){
+                return false;
+            }
+            if (nowLine != nowCol || nowLine != mainDiag){
+                return false;
+            }
+        }
+        return  true;
     }
+
 }
