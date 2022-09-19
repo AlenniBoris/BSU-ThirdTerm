@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/MAIN.dir/main.cpp.o -o MAIN  -Wl,-rpath,"/home/borisall/Рабочий стол/HWK_CPP/HW22_09/MAIN/../Vector/cmake-build-debug" ../../Number/cmake-build-debug/libNumber.a ../../Vector/cmake-build-debug/libVector.so 

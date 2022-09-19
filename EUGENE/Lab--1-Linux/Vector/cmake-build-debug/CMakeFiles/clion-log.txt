@@ -1,0 +1,4 @@
+/home/borisall/Загрузки/clion-2022.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -G "CodeBlocks - Unix Makefiles" -S "/home/borisall/Рабочий стол/HWK_CPP/HW22_09/Vector" -B "/home/borisall/Рабочий стол/HWK_CPP/HW22_09/Vector/cmake-build-debug"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/borisall/Рабочий стол/HWK_CPP/HW22_09/Vector/cmake-build-debug
