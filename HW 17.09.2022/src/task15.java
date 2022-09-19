@@ -12,9 +12,9 @@ public class task15 {
         System.out.println("Enter number of rows");
         int numRow = sc.nextInt();
         for (int i = 0; i < numRow; i++) {
-//            for (int k = numRow; k > i; k--) {
-//                System.out.print(" ");
-//            }
+            for (int k = numRow; k > i; k--) {
+                System.out.print(" ");
+            }
             arr[i] = 1;
             for (int j = 0; j <= i; j++) {
                 System.out.print(arr[i] + " ");
