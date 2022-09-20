@@ -15,7 +15,7 @@ public class task3 {
                 --i;
             }
         }
-        str = String.join("", arr);
+        str = String.join(" ", arr);
         System.out.println(str);
     }
 }
