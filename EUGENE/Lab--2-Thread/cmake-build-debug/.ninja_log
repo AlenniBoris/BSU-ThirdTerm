@@ -1,0 +1,23 @@
+# ninja log v5
+0	493	6865745273758930	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+495	585	6865745274590870	Lab__2_Thread.exe	be97b979cc9c27a9
+3	453	6865745404683470	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+453	563	6865745405768101	Lab__2_Thread.exe	be97b979cc9c27a9
+2	404	6865746429693485	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+404	474	6865746430371830	Lab__2_Thread.exe	be97b979cc9c27a9
+3	557	6865751608962297	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+558	659	6865751609913122	Lab__2_Thread.exe	be97b979cc9c27a9
+3	404	6865752706004438	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+407	505	6865752706918578	Lab__2_Thread.exe	be97b979cc9c27a9
+2	480	6865768599957344	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+480	589	6865768601027381	Lab__2_Thread.exe	be97b979cc9c27a9
+2	467	6865769110547952	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+467	535	6865769111205885	Lab__2_Thread.exe	be97b979cc9c27a9
+3	570	6865770549540878	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+571	664	6865770550450814	Lab__2_Thread.exe	be97b979cc9c27a9
+3	458	6865774591256619	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+458	521	6865774591859395	Lab__2_Thread.exe	be97b979cc9c27a9
+2	472	6865784379261513	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+472	541	6865784379942339	Lab__2_Thread.exe	be97b979cc9c27a9
+2	470	6865788938383154	CMakeFiles/Lab__2_Thread.dir/main.cpp.obj	2b8e77fdf12fe978
+470	535	6865788939013941	Lab__2_Thread.exe	be97b979cc9c27a9

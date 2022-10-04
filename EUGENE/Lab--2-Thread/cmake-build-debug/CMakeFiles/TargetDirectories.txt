@@ -1,0 +1,3 @@
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--2-Thread/cmake-build-debug/CMakeFiles/Lab__2_Thread.dir
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--2-Thread/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--2-Thread/cmake-build-debug/CMakeFiles/rebuild_cache.dir

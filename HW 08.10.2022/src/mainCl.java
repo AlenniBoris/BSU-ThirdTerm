@@ -10,6 +10,6 @@ public class mainCl {
         tree.insert(25);
 
         tree.print();
-        tree.search(70);
+        tree.search(3);
     }
 }
