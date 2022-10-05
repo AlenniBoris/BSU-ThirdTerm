@@ -3,36 +3,21 @@
 #include <vector>
 #include <exception>
 
-std::vector<std::vector<int>> setA(std::vector<std::vector<int>> A, int rows){
-    std::cout << "Enter A: ";
-    for (auto & i : A) {
-        int num;
+std::vector<std::vector<int>> setMatrix(std::vector<std::vector<int>> Matrix, int rows){
+    for (auto & i : Matrix) {
         for (int j = 0; j < rows; ++j) {
-            std::cin >> num;
-            i.push_back(num);
+            i.push_back(rand() % 10 + 1);
         }
     }
-    return A;
+    return Matrix;
 }
 
-std::vector<std::vector<int>> setB(std::vector<std::vector<int>> B, int rows){
-    std::cout << "Enter B: ";
-    for (auto & i : B) {
-        int num;
-        for (int j = 0; j < rows; ++j) {
-            std::cin >> num;
-            i.push_back(num);
-        }
-    }
-    return B;
-}
-
-std::vector<std::vector<int>> setC(std::vector<std::vector<int>> A, int colsA, int rowsA, std::vector<std::vector<int>> B, int colsB, int rowsB, std::vector<std::vector<int>> C){
-    for (int i = 0; i < colsA; ++i) {
+std::vector<std::vector<int>> setC(std::vector<std::vector<int>> A, int sizeM, std::vector<std::vector<int>> B, std::vector<std::vector<int>> C){
+    for (int i = 0; i < sizeM; ++i) {
         std::vector<int> vec;
-        for (int j = 0; j < rowsA; ++j) {
+        for (int j = 0; j < sizeM; ++j) {
             int num = 0;
-            for (int k = 0; k < rowsB; ++k) {
+            for (int k = 0; k < sizeM; ++k) {
                 num+= A[i][k] * B[k][j];
             }
             vec.push_back(num);
@@ -42,59 +27,54 @@ std::vector<std::vector<int>> setC(std::vector<std::vector<int>> A, int colsA, i
     return C;
 }
 
-int main() {
-
-    int colA, rowA;
-    int colB, rowB;
-
-    std::cout << "Please, enter your sizes" << std::endl;
-    std::cout << "Number of columns A = ";
-    std::cin >> colA;
-    std::cout << "Number of rows A = ";
-    std::cin >> rowA;
-    std::cout << "Number of columns B = ";
-    std::cin >> colB;
-    std::cout << "Number of rows B = ";
-    std::cin >> rowB;
-
-//    if (colA < 5 || rowA < 5 || colB < 5 || rowB < 5 || rowA != colB){
+void setSizes(int &sizeM){
+    std::cout << "Please, enter size of your matrixs : " ;
+    std::cin >> sizeM;
+//
+//    if (sizeM < 5){
 //        throw std::invalid_argument("Incorrect input");
 //    }
+}
 
-    std::vector<std::vector<int>> matrixA(colA);
-    std::vector<std::vector<int>> matrixB(colB);
-    std::vector<std::vector<int>> matrixC(colA);
-
-    matrixA = setA(matrixA, rowA);
-    matrixB = setB(matrixB, rowB);
-    matrixC = setC(matrixA, colA, rowA, matrixB, colB, rowB, matrixC);
-
-    std::cout << "----------------------" << std::endl;
-
+void showMatrixs(std::vector<std::vector<int>> matrixA, std::vector<std::vector<int>> matrixB, std::vector<std::vector<int>> matrixC){
+    std::cout << std::endl;
     for (auto & i : matrixA) {
         for (int j : i) {
             std::cout << j << ' ';
         }
         std::cout << std::endl;
     }
-
     std::cout << std::endl;
-
     for (auto & i : matrixB) {
         for (int j : i) {
             std::cout << j << ' ';
         }
         std::cout << std::endl;
     }
-
     std::cout << "----------------------" << std::endl;
-
     for (auto & i : matrixC) {
         for (int j : i) {
             std::cout << j << ' ';
         }
         std::cout << std::endl;
     }
+}
+
+int main() {
+
+    int sizeM;
+
+    setSizes(sizeM);
+
+    std::vector<std::vector<int>> matrixA(sizeM);
+    std::vector<std::vector<int>> matrixB(sizeM);
+    std::vector<std::vector<int>> matrixC(sizeM);
+
+    matrixA = setMatrix(matrixA, sizeM);
+    matrixB = setMatrix(matrixB, sizeM);
+    matrixC = setC(matrixA, sizeM,matrixB,matrixC);
+
+    showMatrixs(matrixA, matrixB, matrixC);
 
     return 0;
 }
