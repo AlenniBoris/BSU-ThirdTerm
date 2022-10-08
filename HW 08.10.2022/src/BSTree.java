@@ -4,7 +4,7 @@ public class BSTree<T extends Comparable<T>> implements Comparable<BSTree<T>>{
         return 0;
     }
 
-    class Node{
+    private class Node{
         T _val;
         Node _left;
         Node _rigth;
@@ -14,7 +14,7 @@ public class BSTree<T extends Comparable<T>> implements Comparable<BSTree<T>>{
         }
     }
 
-    Node root;
+    private Node root;
 
     BSTree() {
         root = null;
@@ -25,7 +25,7 @@ public class BSTree<T extends Comparable<T>> implements Comparable<BSTree<T>>{
     }
 
     public void insert(T num) { root = insertNum(root, num); }
-    public void print(){ printLeafLeft_Root_Right(root); }
+    public void print(){ printLeafLeft_Right_Root(root); }
     public void search(T num) { root = findNum(root, num); }
 
     Node insertNum(Node root, T num){
