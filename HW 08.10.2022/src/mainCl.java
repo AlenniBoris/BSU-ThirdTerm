@@ -1,6 +1,6 @@
 public class mainCl {
     public static void main(String[] args) {
-        BSTree<Integer> tree = new BSTree();
+        BSTree<Integer> tree = new BSTree(87);
         tree.insert(4);
         tree.insert(5);
         tree.insert(3);
