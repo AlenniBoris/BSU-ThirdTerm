@@ -1,9 +1,4 @@
-public class BSTree<T extends Comparable<T>> implements Comparable<BSTree<T>>{
-    @Override
-    public int compareTo(BSTree<T> o) {
-        return 0;
-    }
-
+public class BSTree<T extends Comparable<T>>{
     private class Node{
         T _val;
         Node _left;
