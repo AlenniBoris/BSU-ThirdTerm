@@ -1,6 +1,8 @@
 public class Exponential extends Series{
-    public Exponential(double stepSrs, int elemPos, double first) {
-        super(stepSrs, elemPos, first);
+
+
+    public Exponential(double _first, double _stepSrs, int _elemPos) {
+        super(_first, _stepSrs, _elemPos);
     }
 
     @Override

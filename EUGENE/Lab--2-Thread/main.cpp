@@ -5,6 +5,7 @@
 #include <chrono>
 
 std::vector<double> threadResults;
+std::vector<double> defaultResults;
 
 std::vector<std::vector<int>> setMatrix(std::vector<std::vector<int>> Matrix, int rows){
     for (auto & i : Matrix) {
@@ -24,8 +25,6 @@ void setSizes(int &sizeM){
     }
 }
 
-//--------------------------------------------------------------------------------------
-
 void mulBlock(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>>& matrixB, std::vector<std::vector<int>>& matrixC, int blockI, int blockJ, int sizeM, int sizeB){
     for (int i = blockI; i < std::min(blockI+sizeB, sizeM); ++i) {
         for (int j = 0; j < std::min(blockJ + sizeB, sizeM); ++j) {
@@ -40,7 +39,7 @@ void thrMul(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>
     std::vector<std::thread> threads;
     for (int blockI = 0; blockI < sizeM; blockI += sizeB) {
         for (int blockJ = 0; blockJ < sizeM; blockJ += sizeB) {
-            threads.emplace_back(mulBlock, std::cref(matrixA), std::cref(matrixB), std::ref(matrixC), blockI, blockJ, sizeM, sizeB);
+            threads.emplace_back(mulBlock, std::cref(matrixA), std::cref(matrixB), std::ref(matrixC),blockI, blockJ, sizeM, sizeB);
         }
     }
     for (int i = 0; i < threads.size(); ++i) {
@@ -48,22 +47,15 @@ void thrMul(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>
     }
 }
 
+void defMul(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>>& matrixB, std::vector<std::vector<int>>& matrixC, int sizeM, int sizeB){
+    for (int blockI = 0; blockI < sizeM; blockI += sizeB) {
+        for (int blockJ = 0; blockJ < sizeM; blockJ += sizeB) {
+            mulBlock(matrixA, matrixB, matrixC, blockI, blockJ, sizeM, sizeB);
+        }
+    }
+}
+
 void showMatrixs(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>>& matrixB, std::vector<std::vector<int>>& matrixC, int sizeM){
-//    std::cout << std::endl;
-//    for (auto & i : matrixA) {
-//        for (int j : i) {
-//            std::cout << j << ' ';
-//        }
-//        std::cout << std::endl;
-//    }
-//    std::cout << std::endl;
-//    for (auto & i : matrixB) {
-//        for (int j : i) {
-//            std::cout << j << ' ';
-//        }
-//        std::cout << std::endl;
-//    }
-//    std::cout << "----------------------" << std::endl;
 
     auto startTime = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < sizeM; ++i) {
@@ -76,8 +68,22 @@ void showMatrixs(std::vector<std::vector<int>>& matrixA, std::vector<std::vector
     std::chrono::duration<double> durationThread = endTimeThread - startTime;
     std::cout << durationThread.count() << '\n';
 
-    for (int i = 0; i < threadResults.size(); ++i) {
-        std::cout << "time =  " << threadResults[i];
+    auto startDef = std::chrono::high_resolution_clock::now();
+    for (int  i = 1; i < sizeM; ++i)
+    {
+        defMul(matrixA, matrixB, matrixC, sizeM, i);
+        auto temp = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> tempDuration = temp - startDef;
+        defaultResults.push_back(tempDuration.count());
+    }
+    auto endDef = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> durationDef = endDef - startDef;
+    std::cout << durationDef.count() << '\n';
+    std::cout << "------------------------------------\n";
+    for (int i = 0; i < defaultResults.size(); ++i)
+    {
+        std::cout << "| Block size " << i+1 << " ,difference " << threadResults[i] - defaultResults[i] << '\n';
+        std::cout << "------------------------------------\n";
     }
 }
 

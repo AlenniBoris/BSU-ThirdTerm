@@ -1,6 +1,8 @@
 public class Liner extends Series{
-    public Liner(double stepSrs, int elemPos, double first) {
-        super(stepSrs, elemPos, first);
+
+
+    public Liner(double _first, double _stepSrs, int _elemPos) {
+        super(_first, _stepSrs, _elemPos);
     }
 
     @Override

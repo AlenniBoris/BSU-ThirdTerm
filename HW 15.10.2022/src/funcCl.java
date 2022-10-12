@@ -1,6 +1,10 @@
+import jdk.incubator.vector.VectorOperators;
+
+import java.beans.Expression;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
+
 
 public class funcCl<T extends Comparable<T> & Predicate<? super T>>{
     private T _elem;
@@ -40,14 +44,13 @@ public class funcCl<T extends Comparable<T> & Predicate<? super T>>{
         return res;
     }
 
-    public int fourthTask(){
-        int res = 0;
+    public T fourthTask(){
+        T res = null;
         try{
-            for (T el : _arr){
-                res += el;
-            }
+          res = Arrays.stream(_arr).reduce(0, (a,b) -> a + b);
         }catch (Exception e){
             System.out.print(e.getMessage());
         }
+        return res;
     }
 }

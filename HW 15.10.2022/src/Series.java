@@ -3,14 +3,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Series {
+    private final double _first;
     private final double _stepSrs;
     private final int _elemPos;
-    private final double _first;
 
-    public Series(double stepSrs, int elemPos, double first) {
-        this._stepSrs = stepSrs;
-        this._elemPos = elemPos;
-        this._first = first;
+    public Series(double _first, double _stepSrs, int _elemPos) {
+        this._first = _first;
+        this._stepSrs = _stepSrs;
+        this._elemPos = _elemPos;
     }
 
     public abstract double getElem(double first, double stepSrs, int elemPos);
