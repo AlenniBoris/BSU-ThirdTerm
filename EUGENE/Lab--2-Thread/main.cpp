@@ -3,9 +3,11 @@
 #include <vector>
 #include <exception>
 #include <chrono>
+#include <mutex>
 
 std::vector<double> threadResults;
 std::vector<double> defaultResults;
+std::mutex g_lock;
 
 std::vector<std::vector<int>> setMatrix(std::vector<std::vector<int>> Matrix, int rows){
     for (auto & i : Matrix) {
@@ -39,7 +41,9 @@ void thrMul(std::vector<std::vector<int>>& matrixA, std::vector<std::vector<int>
     std::vector<std::thread> threads;
     for (int blockI = 0; blockI < sizeM; blockI += sizeB) {
         for (int blockJ = 0; blockJ < sizeM; blockJ += sizeB) {
+            g_lock.lock();
             threads.emplace_back(mulBlock, std::cref(matrixA), std::cref(matrixB), std::ref(matrixC),blockI, blockJ, sizeM, sizeB);
+            g_lock.unlock();
         }
     }
     for (int i = 0; i < threads.size(); ++i) {
@@ -85,6 +89,7 @@ void showMatrixs(std::vector<std::vector<int>>& matrixA, std::vector<std::vector
         std::cout << "| Block size " << i+1 << " ,difference " << threadResults[i] - defaultResults[i] << '\n';
         std::cout << "------------------------------------\n";
     }
+    std::cout << "final difference " << durationDef.count() /  durationThread.count() << '\n';
 }
 
 int main() {
