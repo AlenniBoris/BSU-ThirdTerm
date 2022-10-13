@@ -18,6 +18,8 @@ public class task6{
         System.out.println("Element " + a.firstTask());
         System.out.println("Number equals " + a.secondTask());
         System.out.println("Number bigger " + a.thirdTask());
+        System.out.println("Number sum " + a.fourthTask());
+        System.out.println("Arithm num " + a.fifthTask());
     }
 
 }
