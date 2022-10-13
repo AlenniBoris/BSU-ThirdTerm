@@ -1,12 +1,6 @@
-import jdk.incubator.vector.VectorOperators;
+import java.util.List;
 
-import java.beans.Expression;
-import java.util.Arrays;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-
-
-public class funcCl<T extends Comparable<T> & Predicate<? super T>>{
+public class funcCl<T extends Comparable<T>>{
     private T _elem;
     private T[] _arr;
 
@@ -44,13 +38,31 @@ public class funcCl<T extends Comparable<T> & Predicate<? super T>>{
         return res;
     }
 
-    public T fourthTask(){
-        T res = null;
-        try{
-          res = Arrays.stream(_arr).reduce(0, (a,b) -> a + b);
-        }catch (Exception e){
-            System.out.print(e.getMessage());
+    public double fourthTask(){
+        double sum = 0.0;
+        for (T el : _arr){
+            if (Integer.class.equals(el.getClass())) {
+                sum += (Integer) el;
+            }
+            else if (Double.class.equals(el.getClass())) {
+                sum += (Double) el;
+            }
+            else if (Float.class.equals(el.getClass())) {
+                sum += (Float) el;
+            }
+            else if (Short.class.equals(el.getClass())) {
+                sum += (Short) el;
+            }
+            else if (Long.class.equals(el.getClass())) {
+                sum += (Long) el;
+            }
+            else { throw new IllegalArgumentException("Check your types"); }
         }
-        return res;
+
+        return sum;
+    }
+
+    public double fifthTask(){
+        return fourthTask()/ _arr.length;
     }
 }
