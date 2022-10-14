@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.function.IntToLongFunction;
+import java.util.function.Predicate;
 
 public class task6{
 
@@ -15,11 +17,13 @@ public class task6{
         int srchSymb = sc.nextInt();
 
         funcCl a = new funcCl(arr, srchSymb);
-        System.out.println("Element " + a.firstTask());
+        System.out.println("Exist " + a.firstTask());
         System.out.println("Number equals " + a.secondTask());
         System.out.println("Number bigger " + a.thirdTask());
         System.out.println("Number sum " + a.fourthTask());
-        System.out.println("Arithm num " + a.fifthTask());
+        System.out.println("Mid num " + a.fifthTask());
+        Predicate<Integer> pr = i -> i < 0;
+        System.out.println("Predicate check " + a.sixthTask(pr));
     }
 
 }
