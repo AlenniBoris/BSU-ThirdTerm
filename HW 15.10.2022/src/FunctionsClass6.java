@@ -1,11 +1,11 @@
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-public class funcCl<T extends Number & Comparable<T>>{
+public class FunctionsClass6<T extends Number & Comparable<T>>{
     private T _elem;
     private T[] _arr;
 
-    public funcCl(T[] arr, T elem) {
+    public FunctionsClass6(T[] arr, T elem) {
         this._arr = arr;
         this._elem = elem;
     }

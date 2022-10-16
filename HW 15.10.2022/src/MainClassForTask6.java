@@ -1,8 +1,7 @@
 import java.util.Scanner;
-import java.util.function.IntToLongFunction;
 import java.util.function.Predicate;
 
-public class task6{
+public class MainClassForTask6 {
 
     public static void main(String[] args) {
         Integer[] arr = new Integer[10];
@@ -16,7 +15,7 @@ public class task6{
         System.out.print("Enter element for search = ");
         int srchSymb = sc.nextInt();
 
-        funcCl a = new funcCl(arr, srchSymb);
+        FunctionsClass6 a = new FunctionsClass6(arr, srchSymb);
         System.out.println("Exist " + a.firstTask());
         System.out.println("Number equals " + a.secondTask());
         System.out.println("Number bigger " + a.thirdTask());
