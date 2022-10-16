@@ -202,7 +202,11 @@ public class ClassForGUI extends JFrame{
                 if (returnVal == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
                     if (canWork()) {
-                        series.writeSeriesToFile(file.getName());
+                        try {
+                            series.writeSeriesToFile(file.getName());
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             }
