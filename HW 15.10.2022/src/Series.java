@@ -43,12 +43,12 @@ public abstract class Series {
         return arr.toString();
     }
 
-    public void writeSeriesToFile(String fileName) throws IOException {
-        FileWriter fw = new FileWriter(fileName);
-        try{
+    public void writeSeriesToFile(String fileName){
+
+        try(FileWriter fw = new FileWriter(fileName);){
             fw.write(toString());
         } catch (IOException e) {
-            fw.write("SOMETHING WRONG WITH YOUR DATA");
+            System.out.println(e.getMessage());
         }
     }
 

@@ -174,7 +174,7 @@ public class ClassForGUI extends JFrame{
 
         sumPanel.setLayout(new BoxLayout(sumPanel, BoxLayout.Y_AXIS));
         sumPanel.add(sumShowField);
-        elemsShowField.setEditable(false);
+        sumShowField.setEditable(false);
         JScrollPane sumScrollBar = new JScrollPane(sumShowField);
         sumScrollBar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         sumPanel.add(sumScrollBar);
@@ -202,11 +202,7 @@ public class ClassForGUI extends JFrame{
                 if (returnVal == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
                     if (canWork()) {
-                        try {
-                            series.writeSeriesToFile(file.getName());
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                        series.writeSeriesToFile(file.getName());
                     }
                 }
             }
