@@ -1,3 +1,5 @@
+package VarB;
+
 public class SweetsClass {
     private String sweetName;
     private String sweetType;
@@ -25,22 +27,6 @@ public class SweetsClass {
 
     public double getSweetSugar() {
         return sweetSugar;
-    }
-
-    public void setSweetName(String sweetName) {
-        this.sweetName = sweetName;
-    }
-
-    public void setSweetType(String sweetType) {
-        this.sweetType = sweetType;
-    }
-
-    public void setSweetWeight(double sweetWeight) {
-        this.sweetWeight = sweetWeight;
-    }
-
-    public void setSweetSugar(double sweetSugar) {
-        this.sweetSugar = sweetSugar;
     }
 
     public String printSweet(){
