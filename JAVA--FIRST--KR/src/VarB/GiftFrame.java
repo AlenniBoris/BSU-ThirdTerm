@@ -8,23 +8,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class GiftFrame extends JFrame {
-    private JPanel btnPanel = new JPanel();
-    private JButton addBtn = new JButton("Add");
-    private JButton delBtn = new JButton("Delete");
+    private final JTextField nameInput = new JTextField();
+    private final JTextField typeInput = new JTextField();
+    private final JTextField weigthInput = new JTextField();
+    private final JTextField sugarInput = new JTextField();
 
-    private JPanel inputPanel = new JPanel();
-    private JTextField nameInput = new JTextField();
-    private JTextField typeInput = new JTextField();
-    private JTextField weigthInput = new JTextField();
-    private JTextField sugarInput = new JTextField();
+    private final JList<Object> showArea = new JList<>();
 
-    private JList showArea;
+    private final JFileChooser fileChooser = new JFileChooser();
 
-    private JMenuBar menuBar = new JMenuBar();
-
-    private JFileChooser fileChooser = new JFileChooser();
-
-    private GiftClass giftClass = new GiftClass();
+    private final GiftClass giftClass = new GiftClass();
 
     private JMenu createSortMenu(){
         JMenu sortMenu = new JMenu("Sort");
@@ -33,9 +26,8 @@ public class GiftFrame extends JFrame {
         sortName.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!(giftClass.getGiftArr().size() == 0)){
-                    giftClass.sortByName();
-                }else throw new RuntimeException("Nothing to sort");
+                giftClass.sortByName();
+                showArea.setListData(giftClass.printGift());
             }
         });
 
@@ -43,9 +35,8 @@ public class GiftFrame extends JFrame {
         sortType.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!(giftClass.getGiftArr().size() == 0)){
-                    giftClass.sortByType();
-                }else throw new RuntimeException("Nothing to sort");
+                giftClass.sortByType();
+                showArea.setListData(giftClass.printGift());
             }
         });
 
@@ -53,9 +44,9 @@ public class GiftFrame extends JFrame {
         sortWeight.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!(giftClass.getGiftArr().size() == 0)){
-                    giftClass.sortByWeight();
-                }else throw new RuntimeException("Nothing to sort");
+                giftClass.sortByWeight();
+                showArea.setListData(giftClass.printGift());
+
             }
         });
 
@@ -63,9 +54,8 @@ public class GiftFrame extends JFrame {
         sortSugar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!(giftClass.getGiftArr().size() == 0)){
-                    giftClass.sortBySugar();
-                }else throw new RuntimeException("Nothing to sort");
+                giftClass.sortBySugar();
+                showArea.setListData(giftClass.printGift());
             }
         });
 
@@ -123,40 +113,8 @@ public class GiftFrame extends JFrame {
         return fileMenu;
     }
 
-    public GiftFrame(){
-        setLayout(new GridLayout(3,1));
-
-        setJMenuBar(menuBar);
-        menuBar.add(createSortMenu());
-        menuBar.add(createFileMenu());
-
-
-        add(inputPanel);
-
-        inputPanel.setLayout(new GridLayout(1,4));
-
-        inputPanel.add(nameInput);
-        nameInput.setToolTipText("name");
-
-
-        inputPanel.add(typeInput);
-        typeInput.setToolTipText("type");
-
-
-        inputPanel.add(weigthInput);
-        weigthInput.setToolTipText("weight");
-
-        inputPanel.add(sugarInput);
-        sugarInput.setToolTipText("sugar");
-
-
-        showArea = new JList(giftClass.printGift());
-        add(showArea);
-
-        add(btnPanel);
-        btnPanel.setLayout(new GridLayout(1,2));
-
-        btnPanel.add(addBtn);
+    private JButton createAddBtn(){
+        JButton addBtn = new JButton("Add");
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -171,15 +129,61 @@ public class GiftFrame extends JFrame {
             }
         });
 
-        btnPanel.add(delBtn);
+        return addBtn;
+    }
+
+    private JButton createDelBtn(){
+        JButton delBtn = new JButton("Delete");
         delBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                giftClass.deleteSweet(showArea.getSelectedIndex());
-                showArea.setListData(giftClass.printGift());
+                try {
+                    giftClass.deleteSweet(showArea.getSelectedIndex());
+                    showArea.setListData(giftClass.printGift());
+                } catch (IndexOutOfBoundsException err){
+                    showArea.setListData(giftClass.printGift());
+                }
             }
         });
+
+        return delBtn;
     }
 
+    public GiftFrame(){
+        setLayout(new GridLayout(3,1));
+
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        menuBar.add(createSortMenu());
+        menuBar.add(createFileMenu());
+
+        JPanel inputPanel = new JPanel();
+        add(inputPanel);
+
+        inputPanel.setLayout(new GridLayout(1,4));
+
+        inputPanel.add(nameInput);
+        nameInput.setToolTipText("name");
+
+        inputPanel.add(typeInput);
+        typeInput.setToolTipText("type");
+
+        inputPanel.add(weigthInput);
+        weigthInput.setToolTipText("weight");
+
+        inputPanel.add(sugarInput);
+        sugarInput.setToolTipText("sugar");
+
+        showArea.setListData(giftClass.printGift());
+        add(showArea);
+
+        JPanel btnPanel = new JPanel();
+        add(btnPanel);
+        btnPanel.setLayout(new GridLayout(1,2));
+
+        btnPanel.add(createAddBtn());
+        btnPanel.add(createDelBtn());
+
+    }
 
 }

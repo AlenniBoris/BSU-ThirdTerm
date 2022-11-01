@@ -1,17 +1,12 @@
 package VarB;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.CollationElementIterator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class GiftClass {
-    private ArrayList<SweetsClass> giftArr;
+    private final ArrayList<SweetsClass> giftArr;
 
     public GiftClass(ArrayList<SweetsClass> giftArr) {
         this.giftArr = giftArr;
@@ -75,42 +70,44 @@ public class GiftClass {
     }
 
     public void sortByName(){
-        for (int i = 0; i < giftArr.size() - 1; ++i) {
-            if(giftArr.get(i).getSweetName().compareTo(giftArr.get(i+1).getSweetName()) > 0){
-                Collections.swap(giftArr, i, i+1);
-                i = 0;
+        giftArr.sort(new Comparator<SweetsClass>() {
+            @Override
+            public int compare(SweetsClass o1, SweetsClass o2) {
+                return o1.getSweetName().compareTo(o2.getSweetName());
             }
-        }
-        printGift();
+        });
     }
 
     public void sortByType(){
-        for (int i = 0; i < giftArr.size() - 1; ++i) {
-            if(giftArr.get(i).getSweetType().compareTo(giftArr.get(i+1).getSweetType()) > 0){
-                Collections.swap(giftArr, i, i+1);
-                i = 0;
+        giftArr.sort(new Comparator<SweetsClass>() {
+            @Override
+            public int compare(SweetsClass o1, SweetsClass o2) {
+                return o1.getSweetType().compareTo(o2.getSweetType());
             }
-        }
-        printGift();
+        });
     }
 
     public void sortByWeight(){
-        for (int i = 0; i < giftArr.size() - 1; ++i) {
-            if(giftArr.get(i).getSweetWeight() > giftArr.get(i+1).getSweetWeight()){
-                Collections.swap(giftArr, i, i+1);
-                i = 0;
+        giftArr.sort(new Comparator<SweetsClass>() {
+            @Override
+            public int compare(SweetsClass o1, SweetsClass o2) {
+                return Double.compare(o2.getSweetWeight(), o1.getSweetWeight());
             }
-        }
-        printGift();
+        });
     }
 
     public void sortBySugar(){
-        for (int i = 0; i < giftArr.size() - 1; ++i) {
-            if(giftArr.get(i).getSweetSugar() > giftArr.get(i+1).getSweetSugar()){
-                Collections.swap(giftArr, i, i+1);
-                i = 0;
+//        for (int i = 0; i < giftArr.size() - 1; ++i) {
+//            if(giftArr.get(i).getSweetSugar() < giftArr.get(i+1).getSweetSugar()){
+//                Collections.swap(giftArr, i, i+1);
+//                i = 0;
+//            }
+//        }
+        giftArr.sort(new Comparator<SweetsClass>() {
+            @Override
+            public int compare(SweetsClass o1, SweetsClass o2) {
+                return Double.compare(o2.getSweetSugar(), o1.getSweetSugar());
             }
-        }
-        printGift();
+        });
     }
 }
