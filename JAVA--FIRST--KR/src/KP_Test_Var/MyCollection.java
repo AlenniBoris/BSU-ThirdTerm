@@ -1,12 +1,9 @@
 package KP_Test_Var;
 
-import VarB.SweetsClass;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 

@@ -1,5 +1,7 @@
 package VarB;
 
+import VarSweets.SweetsClass;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,12 +10,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class GiftFrame extends JFrame {
-    private final JTextField nameInput = new JTextField();
-    private final JTextField typeInput = new JTextField();
-    private final JTextField weigthInput = new JTextField();
-    private final JTextField sugarInput = new JTextField();
-
-    private final JList<Object> showArea = new JList<>();
+    private final DefaultListModel<String> listModel = new DefaultListModel<>();
+    private final JList<String> showArea = new JList<>(listModel);
 
     private final JFileChooser fileChooser = new JFileChooser();
 
@@ -70,17 +68,19 @@ public class GiftFrame extends JFrame {
     private JMenu createFileMenu(){
         JMenu fileMenu = new JMenu("File");
 
-        JMenuItem saveItem = new JMenuItem("Save as");
-        saveItem.addActionListener(new ActionListener() {
+        JMenu saveMenu = new JMenu("Save");
+
+        JMenuItem saveAllItem = new JMenuItem("Save all");
+        saveAllItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fileChooser.setDialogTitle("Save as");
+                fileChooser.setDialogTitle("Save all");
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 int ret = fileChooser.showDialog(null, "Открыть файл");
                 if (ret == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
                     try {
-                        giftClass.saveToFile(file);
+                        giftClass.saveArrToFile(file);
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -88,48 +88,101 @@ public class GiftFrame extends JFrame {
 
             }
         });
-        fileMenu.add(saveItem);
+        saveMenu.add(saveAllItem);
 
-        JMenuItem loadItem = new JMenuItem("Load file");
-        loadItem.addActionListener(new ActionListener() {
+        JMenuItem saveCookiesItem = new JMenuItem("Save cookies");
+        saveCookiesItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fileChooser.setDialogTitle("Save as");
+                fileChooser.setDialogTitle("Save cookies");
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 int ret = fileChooser.showDialog(null, "Открыть файл");
                 if (ret == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
                     try {
-                        giftClass.getFromFile(file);
-                        showArea.setListData(giftClass.printGift());
+                        giftClass.saveCookiesToFile(file);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+            }
+        });
+        saveMenu.add(saveCookiesItem);
+
+        JMenuItem saveLollipopsItem = new JMenuItem("Save cookies");
+        saveCookiesItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fileChooser.setDialogTitle("Save cookies");
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                int ret = fileChooser.showDialog(null, "Открыть файл");
+                if (ret == JFileChooser.APPROVE_OPTION){
+                    File file = fileChooser.getSelectedFile();
+                    try {
+                        giftClass.saveLollipopsToFile(file);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+            }
+        });
+        saveMenu.add(saveLollipopsItem);
+
+        JMenu loadTypeMenu = new JMenu("Load file");
+
+        JMenuItem loadCookies = new JMenuItem("Cookies");
+        loadCookies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fileChooser.setDialogTitle("Cookies");
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                int ret = fileChooser.showDialog(null, "Открыть файл");
+                if (ret == JFileChooser.APPROVE_OPTION){
+                    File file = fileChooser.getSelectedFile();
+                    try {
+                        listModel.clear();
+                        giftClass.getCookiesFromFile(file);
+                        for (int i = 0; i < giftClass.getGiftArr().size(); i++) {
+                           listModel.addElement(giftClass.getGiftArr().get(i).printSweet());
+                        }
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
                 }
             }
         });
-        fileMenu.add(loadItem);
+
+        JMenuItem loadLollipop = new JMenuItem("Lollipops");
+        loadLollipop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fileChooser.setDialogTitle("Lollipops");
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                int ret = fileChooser.showDialog(null, "Открыть файл");
+                if (ret == JFileChooser.APPROVE_OPTION){
+                    File file = fileChooser.getSelectedFile();
+                    try {
+                        listModel.clear();
+                        giftClass.getLollipopFromFile(file);
+                        for (String str: giftClass.printGift()){
+                            listModel.addElement(str);
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        loadTypeMenu.add(loadCookies);
+        loadTypeMenu.add(loadLollipop);
+
+        fileMenu.add(loadTypeMenu);
+        fileMenu.add(saveMenu);
 
         return fileMenu;
-    }
-
-    private JButton createAddBtn(){
-        JButton addBtn = new JButton("Add");
-        addBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (nameInput.getText().length() != 0 && typeInput.getText().length() != 0 && weigthInput.getText().length() != 0 && sugarInput.getText().length() != 0){
-                    giftClass.addSweet(new SweetsClass(nameInput.getText(), typeInput.getText(), Double.parseDouble(weigthInput.getText()), Double.parseDouble(sugarInput.getText())));
-                }
-                showArea.setListData(giftClass.printGift());
-                nameInput.setText("");
-                typeInput.setText("");
-                weigthInput.setText("");
-                sugarInput.setText("");
-            }
-        });
-
-        return addBtn;
     }
 
     private JButton createDelBtn(){
@@ -150,38 +203,22 @@ public class GiftFrame extends JFrame {
     }
 
     public GiftFrame(){
-        setLayout(new GridLayout(3,1));
+        setLayout(new GridLayout(2,1));
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
         menuBar.add(createSortMenu());
         menuBar.add(createFileMenu());
 
-        JPanel inputPanel = new JPanel();
-        add(inputPanel);
-
-        inputPanel.setLayout(new GridLayout(1,4));
-
-        inputPanel.add(nameInput);
-        nameInput.setToolTipText("name");
-
-        inputPanel.add(typeInput);
-        typeInput.setToolTipText("type");
-
-        inputPanel.add(weigthInput);
-        weigthInput.setToolTipText("weight");
-
-        inputPanel.add(sugarInput);
-        sugarInput.setToolTipText("sugar");
-
-        showArea.setListData(giftClass.printGift());
+        for (String str : giftClass.printGift()){
+            listModel.addElement(str);
+        }
         add(showArea);
 
         JPanel btnPanel = new JPanel();
         add(btnPanel);
         btnPanel.setLayout(new GridLayout(1,2));
 
-        btnPanel.add(createAddBtn());
         btnPanel.add(createDelBtn());
 
     }

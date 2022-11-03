@@ -1,13 +1,19 @@
 package VarB;
 
 import VarB.GiftFrame;
+import VarSweets.CookiesClass;
+import VarSweets.LollipopClass;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.function.Predicate;
 
 public class MainClass {
-    public static void main(String[] args) {
-//        VarB.SweetsClass sw1 = new VarB.SweetsClass("d", "Candy", 15.2,0.8);
-//        VarB.SweetsClass sw2 = new VarB.SweetsClass("a", "Cracker", 10,18.4);
-//        VarB.SweetsClass sw3 = new VarB.SweetsClass("b", "Ice-cream", 250,50);
-//        VarB.SweetsClass sw4 = new VarB.SweetsClass("c", "Candy", 2,0.2);
+    public static void main(String[] args) throws IOException {
+//        VarSweets.SweetsClass sw1 = new VarSweets.SweetsClass("d", "Candy", 15.2,0.8);
+//        VarSweets.SweetsClass sw2 = new VarSweets.SweetsClass("a", "Cracker", 10,18.4);
+//        VarSweets.SweetsClass sw3 = new VarSweets.SweetsClass("b", "Ice-cream", 250,50);
+//        VarSweets.SweetsClass sw4 = new VarSweets.SweetsClass("c", "Candy", 2,0.2);
 //
 //        VarB.GiftClass gift = new VarB.GiftClass();
 //
@@ -31,8 +37,31 @@ public class MainClass {
 //        System.out.println();
 //        gift.printGift();
 
-        GiftFrame fr = new GiftFrame();
-        fr.setSize(500,500);
-        fr.setVisible(true);
+        CookiesClass cookiesClass1 = new CookiesClass("jhvbshjvb","dsc","kmsdcksm",45,66,4);
+        CookiesClass cookiesClass2 = new CookiesClass("fdb","zdfbzfdb","wqdq",32,4,1);
+        LollipopClass lollipopClass1 = new LollipopClass("jhvbshjvb","dsc","kmsdcksm",45,6);
+        LollipopClass lollipopClass2 = new LollipopClass("fdb","zdfbzfdb","wqdq",32,4);
+
+        GiftClass gift = new GiftClass();
+
+        gift.addSweet(cookiesClass1);
+        gift.addSweet(cookiesClass2);
+        gift.addSweet(lollipopClass1);
+        gift.addSweet(lollipopClass2);
+
+        for(String str : gift.printGift()){
+            System.out.println(str);
+        }
+
+        gift.saveArrToFile(new File("cookies_out"));
+        gift.getCookiesFromFile(new File("cookies"));
+        gift.saveArrToFile(new File("cookies_out"));
+
+
+        System.out.println('\n' + gift.getBySugar(4, 40));
+
+//        GiftFrame fr = new GiftFrame();
+//        fr.setSize(500,500);
+//        fr.setVisible(true);
     }
 }

@@ -1,10 +1,10 @@
-package VarB;
+package VarSweets;
 
-public class SweetsClass {
-    private String sweetName;
-    private String sweetType;
-    private double sweetWeight;
-    private double sweetSugar;
+public abstract class SweetsClass {
+    private final String sweetName;
+    private final String sweetType;
+    private final double sweetWeight;
+    private final double sweetSugar;
 
     public SweetsClass(String sweetName, String sweetType, double sweetWeight, double sweetSugar) {
         this.sweetName = sweetName;
@@ -29,8 +29,5 @@ public class SweetsClass {
         return sweetSugar;
     }
 
-    public String printSweet(){
-        return("Name: " + sweetName + " " + "Type: " + sweetType+ " " +
-                "Weight: " + sweetWeight + " " + "Sugar: " + sweetSugar);
-    }
+    public abstract String printSweet();
 }

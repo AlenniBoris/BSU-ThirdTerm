@@ -1,11 +1,15 @@
 package VarB;
 
+import VarSweets.CookiesClass;
+import VarSweets.LollipopClass;
+import VarSweets.SweetsClass;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class GiftClass {
+public class GiftClass{
     private final ArrayList<SweetsClass> giftArr;
 
     public GiftClass(ArrayList<SweetsClass> giftArr) {
@@ -42,7 +46,7 @@ public class GiftClass {
         return res;
     }
 
-    public void saveToFile(File fileName) throws IOException {
+    public void saveArrToFile(File fileName) throws IOException {
         FileWriter fw = new FileWriter(fileName);
         for(SweetsClass sweet : giftArr){
             fw.write(sweet.printSweet() + "\n");
@@ -50,10 +54,37 @@ public class GiftClass {
         fw.close();
     }
 
-    public void getFromFile(File fileName) throws IOException{
+    public void saveCookiesToFile(File fileName) throws IOException {
+        FileWriter fw = new FileWriter(fileName);
+        for(SweetsClass sweet : giftArr){
+            if (sweet instanceof CookiesClass){
+                fw.write(sweet.printSweet() + "\n");
+            }
+        }
+        fw.close();
+    }
+
+    public void saveLollipopsToFile(File fileName) throws IOException {
+        FileWriter fw = new FileWriter(fileName);
+        for(SweetsClass sweet : giftArr){
+            if (sweet instanceof LollipopClass){
+                fw.write(sweet.printSweet() + "\n");
+            }
+        }
+        fw.close();
+    }
+
+    public void getCookiesFromFile(File fileName) throws IOException{
         Scanner sc = new Scanner(fileName);
         while(sc.hasNext()){
-            giftArr.add(new SweetsClass(sc.next(), sc.next(), Double.parseDouble(sc.next()), Double.parseDouble(sc.next())));
+            giftArr.add(new CookiesClass(sc.next(), sc.next(), sc.next(), Double.parseDouble(sc.next()), Double.parseDouble(sc.next()), Integer.parseInt(sc.next())));
+        }
+    }
+
+    public void getLollipopFromFile(File fileName) throws IOException{
+        Scanner sc = new Scanner(fileName);
+        while(sc.hasNext()){
+            giftArr.add(new LollipopClass(sc.next(), sc.next(),sc.next(), Double.parseDouble(sc.next()), Double.parseDouble(sc.next())));
         }
     }
 
@@ -97,12 +128,6 @@ public class GiftClass {
     }
 
     public void sortBySugar(){
-//        for (int i = 0; i < giftArr.size() - 1; ++i) {
-//            if(giftArr.get(i).getSweetSugar() < giftArr.get(i+1).getSweetSugar()){
-//                Collections.swap(giftArr, i, i+1);
-//                i = 0;
-//            }
-//        }
         giftArr.sort(new Comparator<SweetsClass>() {
             @Override
             public int compare(SweetsClass o1, SweetsClass o2) {
