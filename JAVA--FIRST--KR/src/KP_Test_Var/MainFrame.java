@@ -6,77 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
-    private JMenu saveMenu() {
-        JMenuItem saveMin = new JMenuItem("Minimum");
-        saveMin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Save min");
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                int ret = fileChooser.showDialog(null, "Открыть файл");
-                if (ret == JFileChooser.APPROVE_OPTION){
-                    File file = fileChooser.getSelectedFile();
-                    try {
-                        myCollection.saveTofile(file, myCollection.getStudentWithMin());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        });
 
-        JMenuItem saveMax = new JMenuItem("Maximum");
-        saveMax.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Save max");
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                int ret = fileChooser.showDialog(null, "Открыть файл");
-                if (ret == JFileChooser.APPROVE_OPTION){
-                    File file = fileChooser.getSelectedFile();
-                    try {
-                        myCollection.saveTofile(file, myCollection.getStudentWithMax());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        });
-
-        JMenuItem saveAll = new JMenuItem("Save all");
-        saveMax.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Save all");
-                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                int ret = fileChooser.showDialog(null, "Открыть файл");
-                if (ret == JFileChooser.APPROVE_OPTION){
-                    File file = fileChooser.getSelectedFile();
-                    try {
-                        myCollection.saveTofile(file, myCollection.getStudents());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        });
-
-        JMenu saveMenu = new JMenu("Save");
-        saveMenu.add(saveMin);
-        saveMenu.add(saveMax);
-        saveMenu.add(saveAll);
-
-        return saveMenu;
-    }
 
     private JMenu loadMenu(){
-        JMenuItem loadItem = new JMenuItem("Load");
-        loadItem.addActionListener(new ActionListener() {
+        JMenuItem loadStudents = new JMenuItem("Load students");
+        loadStudents.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fileChooser = new JFileChooser();
@@ -86,8 +23,28 @@ public class MainFrame extends JFrame {
                 if (ret == JFileChooser.APPROVE_OPTION){
                     File file = fileChooser.getSelectedFile();
                     try {
-                        myCollection.fillFromFile(file);
-                        showList.setListData(myCollection.printAll());
+                        students = new MyCollection<>(FillClass.getStudentsFromFile(fileChooser.getSelectedFile()));
+                        studentsList.setListData(students.toArray());
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        JMenuItem loadNumbers = new JMenuItem("Load numbers");
+        loadNumbers.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Load");
+                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                int ret = fileChooser.showDialog(null, "Открыть файл");
+                if (ret == JFileChooser.APPROVE_OPTION){
+                    File file = fileChooser.getSelectedFile();
+                    try {
+                        numbers = new MyCollection<>(FillClass.getFloatsFromFile(fileChooser.getSelectedFile()));
+                        numbersList.setListData(numbers.toArray());
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -96,50 +53,106 @@ public class MainFrame extends JFrame {
         });
 
         JMenu loadMenu = new JMenu("Load");
-        loadMenu.add(loadItem);
+        loadMenu.add(loadStudents);
+        loadMenu.add(loadNumbers);
 
         return loadMenu;
     }
 
-    private JButton minButton = new JButton("Minimum");
-    private JButton maxButton = new JButton("Maximum");
-    private JPanel buttonPanel = new JPanel(new GridLayout(1,2));
-    private JMenuBar menuBar = new JMenuBar();
     private JFileChooser fileChooser;
-    private MyCollection myCollection = new MyCollection();
-    private JList showList = new JList();
+    private MyCollection<Student> students;
+    private MyCollection<Float> numbers;
 
-    private ResFrame resFrame;
+    private JMenuBar menuBar = new JMenuBar();
+
+    private JPanel studentsPanel = new JPanel();
+    private JList studentsList = new JList();
+    private JPanel btnsStudents = new JPanel(new GridLayout(1,2));
+    private JButton maxStudent = new JButton("max student");
+    private JButton minStudent = new JButton("min student");
+
+    private JPanel numbersPanel = new JPanel();
+    private JList numbersList = new JList();
+    private JPanel btnsNumbers = new JPanel(new GridLayout(1,2));
+    private JButton maxNumber = new JButton("max number");
+    private JButton minNumber = new JButton("min number");
+
+    private JPanel setStudentsBtn(){
+        btnsStudents.add(maxStudent);
+        maxStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JOptionPane.showMessageDialog(null, "Max: " + students.max().toString());
+                } catch (NullPointerException exception){
+                    JOptionPane.showMessageDialog(null, "Cant show");
+                }
+            }
+        });
+
+        btnsStudents.add(minStudent);
+        minStudent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JOptionPane.showMessageDialog(null, "Min: " + students.min().toString());
+                } catch (NullPointerException exception){
+                    JOptionPane.showMessageDialog(null, "Cant show");
+                }
+            }
+        });
+
+        return btnsStudents;
+    }
+
+    private JPanel setNumbersBtn(){
+        btnsNumbers.add(maxNumber);
+        maxNumber.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JOptionPane.showMessageDialog(null, "Max: " + numbers.max().toString());
+                } catch (NullPointerException exception){
+                    JOptionPane.showMessageDialog(null, "Cant show");
+                }
+            }
+        });
+
+        btnsNumbers.add(minNumber);
+        minNumber.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JOptionPane.showMessageDialog(null, "Min: " + numbers.min().toString());
+                } catch (NullPointerException exception){
+                    JOptionPane.showMessageDialog(null, "Cant show");
+                }
+            }
+        });
+
+        return btnsNumbers;
+    }
 
     public MainFrame(){
         super("main frame");
-        setLayout(new GridLayout(2,1));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setJMenuBar(menuBar);
         menuBar.add(loadMenu());
-        menuBar.add(saveMenu());
 
-        add(showList);
 
-        add(buttonPanel);
-        buttonPanel.add(minButton);
-        minButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resFrame = new ResFrame(myCollection.getStudentWithMin());
-                resFrame.setSize(500,500);
-                resFrame.setVisible(true);
-            }
-        });
 
-        buttonPanel.add(maxButton);
-        maxButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resFrame = new ResFrame(myCollection.getStudentWithMax());
-                resFrame.setSize(500,500);
-                resFrame.setVisible(true);
-            }
-        });
+        setLayout(new GridLayout(1,2));
+
+        add(studentsPanel);
+        studentsPanel.setLayout(new GridLayout(2,1));
+        studentsPanel.add(setStudentsBtn());
+        studentsPanel.add(studentsList);
+
+        add(numbersPanel);
+        numbersPanel.setLayout(new GridLayout(2,1));
+        numbersPanel.add(setNumbersBtn());
+        numbersPanel.add(numbersList);
+
     }
 }

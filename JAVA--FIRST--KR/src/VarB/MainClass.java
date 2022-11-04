@@ -60,8 +60,8 @@ public class MainClass {
 
         System.out.println('\n' + gift.getBySugar(4, 40));
 
-//        GiftFrame fr = new GiftFrame();
-//        fr.setSize(500,500);
-//        fr.setVisible(true);
+        GiftFrame fr = new GiftFrame();
+        fr.setSize(500,500);
+        fr.setVisible(true);
     }
 }

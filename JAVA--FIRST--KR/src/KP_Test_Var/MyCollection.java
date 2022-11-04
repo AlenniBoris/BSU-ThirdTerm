@@ -3,78 +3,41 @@ package KP_Test_Var;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
-public class MyCollection{
-    private ArrayList<Student> students;
+public class MyCollection<T extends Comparable<T>>{
+    private ArrayList<T> collection;
 
-    public MyCollection(ArrayList<Student> students) {
-        this.students = students;
+    public MyCollection(ArrayList<T> collection){
+        this.collection = collection;
     }
 
-    public MyCollection() {
-        students = new ArrayList<>();
+    public T max(){
+        Optional<T> val = collection.stream().max(Comparator.naturalOrder());
+        return val.get();
     }
 
-    public ArrayList<Student> getStudents() {
-        return students;
+    public T min(){
+        Optional<T> val = collection.stream().min(Comparator.naturalOrder());
+        return val.get();
     }
 
-    public void fillFromFile(File file) throws IOException{
-        Scanner sc = new Scanner(file);
-        while(sc.hasNext()){
-            students.add(new Student(sc.next(), Integer.parseInt(sc.next()), Double.parseDouble(sc.next())));
+    public ArrayList<T> getCollection(){
+        return collection;
+    }
+
+
+    public void deleteElement(int posInList){
+        collection.remove(posInList);
+    }
+
+
+    public String[] toArray(){
+        String[] arr = new String[collection.size()];
+        for (int i = 0; i < collection.size(); ++i){
+            arr[i] = collection.get(i).toString();
         }
+        return arr;
     }
 
-    public void saveTofile(File file, ArrayList<Student> studentArrayList) throws IOException{
-        FileWriter fw = new FileWriter(file);
-        for(Student student : studentArrayList){
-            fw.write(student.printStudent() + "\n");
-        }
-        fw.close();
-    }
-
-    public void addComponent(Student student){
-        students.add(student);
-    }
-
-    public void deleteStudent(int posInList){
-        students.remove(posInList);
-    }
-
-    public void Sort(){
-        for (int i = 0; i < students.size() - 1; ++i) {
-            if(students.get(i).getAverage() > students.get(i+1).getAverage()){
-                Collections.swap(students, i, i+1);
-                i = 0;
-            }
-        }
-    }
-
-    public ArrayList<Student> getStudentWithMin() throws IllegalArgumentException{
-        Sort();
-        Student resStudent = students.get(0);
-        ArrayList<Student> resArr = new ArrayList<>();
-        resArr.add(resStudent);
-        return resArr;
-    }
-
-    public ArrayList<Student> getStudentWithMax() throws IllegalArgumentException{
-        Sort();
-        Student resStudent = students.get(students.size() - 1);
-        ArrayList<Student> resArr = new ArrayList<>();
-        resArr.add(resStudent);
-        return resArr;
-    }
-
-    public String[] printAll(){
-        String[] res = new String[students.size()];
-        for (int i = 0; i < students.size(); i++) {
-            res[i] = students.get(i).printStudent();
-        }
-        return res;
-    }
 }

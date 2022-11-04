@@ -1,6 +1,6 @@
 package KP_Test_Var;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private String name;
     private int course;
     private double average;
@@ -23,7 +23,25 @@ public class Student {
         return average;
     }
 
-    public String printStudent(){
+    @Override
+    public String toString(){
         return ("Name: " + name + " Course: " + course + " Average: " + average);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCourse(int course) {
+        this.course = course;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return (int)(this.getAverage() - o.getAverage());
     }
 }
