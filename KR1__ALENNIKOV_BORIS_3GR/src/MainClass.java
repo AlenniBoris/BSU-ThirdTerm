@@ -38,9 +38,9 @@ public class MainClass {
         System.out.print(Business.getAverageSalary(organisation, "awd"));
 
 
-//
-//        BusinessFrame frame = new BusinessFrame();
-//        frame.setSize(500,500);
-//        frame.setVisible(true);
+
+        BusinessFrame frame = new BusinessFrame();
+        frame.setSize(500,500);
+        frame.setVisible(true);
     }
 }

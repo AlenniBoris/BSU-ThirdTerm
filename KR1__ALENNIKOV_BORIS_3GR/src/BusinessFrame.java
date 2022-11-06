@@ -76,7 +76,7 @@ public class BusinessFrame extends JFrame {
         loadStudents.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fileChooser = new JFileChooser();
+                fileChooser = new JFileChooser(".");
                 fileChooser.setDialogTitle("Load");
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 int ret = fileChooser.showDialog(null, "Открыть файл");
@@ -96,7 +96,7 @@ public class BusinessFrame extends JFrame {
         loadNumbers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fileChooser = new JFileChooser();
+                fileChooser = new JFileChooser(".");
                 fileChooser.setDialogTitle("Load");
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 int ret = fileChooser.showDialog(null, "Открыть файл");
