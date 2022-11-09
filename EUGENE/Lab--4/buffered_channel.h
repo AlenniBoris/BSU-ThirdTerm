@@ -16,7 +16,7 @@ public:
     void Send(T&& value){
 
         if (channelClose){
-            throw std::runtime_error("channel is closed");
+            throw new std::runtime_error("channel is closed");
         }
 
         std::unique_lock<std::mutex> locker(g_lock);
@@ -30,11 +30,11 @@ public:
     }
 
     std::pair<T, bool> Recv(){
+        std::unique_lock<std::mutex> locker(g_lock);
+
         if (channelClose && taskQueue.empty()){
             return std::make_pair(T(), false);
         }
-
-        std::unique_lock<std::mutex> locker(g_lock);
 
         queueCheck.wait(locker, [this]{
             return taskQueue.size() != 0;
@@ -50,7 +50,7 @@ public:
     }
 
     void Close(){
-        channelClose = false;
+        channelClose = true;
         queueCheck.notify_all();
     }
 
