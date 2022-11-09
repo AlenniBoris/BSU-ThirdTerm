@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Lab__5_Lab__4_but_different_library_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Lab__5_Lab__4_but_different_library_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Lab__5_Lab__4_but_different_library_-Debug-1e39ddacee6e73b08795.json",
+					"name" : "Lab__5_Lab__4_but_different_library_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Proga for BSU/BSU-Third/EUGENE/Lab--5(Lab--4 but different library)/cmake-build-debug",
+		"source" : "C:/Proga for BSU/BSU-Third/EUGENE/Lab--5(Lab--4 but different library)"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
