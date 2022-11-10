@@ -19,40 +19,38 @@ public class SecondTask extends JFrame{
             button.setBackground(Color.green);
             buttons.add(button);
         }
-        for (JButton jButton : buttons){
-            jButton.setBackground(Color.green);
-            final String[] defaultText = {""};
-            jButton.addMouseListener(new MouseListener() {
+        for (int i = 0; i < buttons.size(); ++i){
+            buttons.get(i).setBackground(Color.green);
+            String text = buttons.get(i).getText();
+            int finalI = i;
+            buttons.get(i).addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    defaultText[0] = jButton.getText();
-                    jButton.setText("Clicked!");
+                    buttons.get(finalI).setText("Clicked!");
                 }
 
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    if (e.getSource() == jButton){
-                        jButton.setText("Clicked!");
-                    }
+                    buttons.get(finalI).setText("Clicked!");
                 }
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    jButton.setText(defaultText[0]);
+                    buttons.get(finalI).setText(text);
                 }
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    color = jButton.getBackground();
-                    jButton.setBackground(Color.red);
+                    color = buttons.get(finalI).getBackground();
+                    buttons.get(finalI).setBackground(Color.red);
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    jButton.setBackground(color);
+                    buttons.get(finalI).setBackground(color);
                 }
             });
-            add(jButton);
+            add(buttons.get(i));
         }
     }
 
