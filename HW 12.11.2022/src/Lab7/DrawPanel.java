@@ -51,9 +51,7 @@ public class DrawPanel extends JComponent{
         this.color = color;
     }
 
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return color; }
 
     public BufferedImage getImage() {
         return image;

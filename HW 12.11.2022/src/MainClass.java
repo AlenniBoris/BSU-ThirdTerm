@@ -7,7 +7,7 @@ public class MainClass {
     public static void main(String[] args) {
 //        Lab8.FirstTask lab8First = new FirstTask();
 //        Lab8.SecondTask lab8Second = new SecondTask();
-        Lab8.ThirdTask lab8Third = new ThirdTask();
+//        Lab8.ThirdTask lab8Third = new ThirdTask();
 
 //        Lab7.FrameClass frameClass = new FrameClass();
     }
