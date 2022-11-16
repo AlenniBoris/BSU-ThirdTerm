@@ -6,16 +6,32 @@
 			[
 				{
 					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.21"
 					},
 					"projectIndex" : 0,
-					"source" : ".",
+					"source" : "."
+				},
+				{
+					"build" : "killer",
+					"jsonFile" : "directory-killer-Debug-c8049157a77e6d920d65.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "killer",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -25,22 +41,31 @@
 				{
 					"directoryIndexes" : 
 					[
-						0
+						0,
+						1
 					],
 					"name" : "Lab__6",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 0,
-					"id" : "Lab__6::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Lab__6-Debug-b96e0bf4c23387ab02c7.json",
-					"name" : "Lab__6",
+					"directoryIndex" : 1,
+					"id" : "killer::@0585c74ec71c2b52652a",
+					"jsonFile" : "target-killer-Debug-661796770c5949652b7c.json",
+					"name" : "killer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "libkiller::@0585c74ec71c2b52652a",
+					"jsonFile" : "target-libkiller-Debug-0b1bc30f9f3f651c4660.json",
+					"name" : "libkiller",
 					"projectIndex" : 0
 				}
 			]

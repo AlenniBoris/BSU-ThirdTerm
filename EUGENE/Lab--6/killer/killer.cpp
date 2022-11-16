@@ -1,17 +1,14 @@
-#include <iostream>
-#include <windows.h>
-#include <tlhelp32.h>
-#include <string>
-#include <sstream>
+#include "killer.h"
 
-void killById(int id){
-    HANDLE process = OpenProcess(PROCESS_TERMINATE, false, id);
-    auto result = TerminateProcess(process, NULL);
-    CloseHandle(process);
-    if (result){
-        std::cout << "Process " + std::to_string(id) + " was killed" << std::endl;
+void killByProc(std::string PROC_TO_KILL){
+    std::string temp_str;
+    if (!PROC_TO_KILL.empty()){
+        std::stringstream stream(PROC_TO_KILL);
+        while(std::getline(stream, temp_str, ',')){
+            killByName(temp_str);
+        }
     }else{
-        std::cout << "Process " + std::to_string(id) + " wasn't killed" << std::endl;
+        std::cout << "Nothing to close";
     }
 }
 
@@ -40,21 +37,13 @@ void killByName(std::string name){
     CloseHandle(processes);
 }
 
-void killByProc(std::string PROC_TO_KILL){
-    std::string temp_str;
-    if (!PROC_TO_KILL.empty()){
-        std::stringstream stream(PROC_TO_KILL);
-        while(std::getline(stream, temp_str, ',')){
-            killByName(temp_str);
-        }
+void killById(int id){
+    HANDLE process = OpenProcess(PROCESS_TERMINATE, false, id);
+    auto result = TerminateProcess(process, NULL);
+    CloseHandle(process);
+    if (result){
+        std::cout << "Process " + std::to_string(id) + " was killed" << std::endl;
     }else{
-        std::cout << "Nothing to close";
+        std::cout << "Process " + std::to_string(id) + " wasn't killed" << std::endl;
     }
-}
-
-int main() {
-//    killById(1827768);
-    killByName("Telegram.exe");
-    killByProc("Telegram.exe,Discord.exe,msedge.exe");
-    return 0;
 }
