@@ -1,0 +1,3 @@
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--6/cmake-build-debug/CMakeFiles/Lab__6.dir
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--6/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Proga for BSU/BSU-Third/EUGENE/Lab--6/cmake-build-debug/CMakeFiles/rebuild_cache.dir
