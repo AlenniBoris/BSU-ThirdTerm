@@ -1,2 +1,8 @@
-add_executable(user.cpp)
-add_library(libkiller)
+cmake_minimum_required(VERSION 3.21)
+project(user)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(user main.cpp)
+
+

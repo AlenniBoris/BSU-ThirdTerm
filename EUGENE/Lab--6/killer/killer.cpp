@@ -1,3 +1,5 @@
+#include <locale>
+#include <codecvt>
 #include "killer.h"
 
 void killByProc(std::string PROC_TO_KILL){
@@ -9,6 +11,30 @@ void killByProc(std::string PROC_TO_KILL){
         }
     }else{
         std::cout << "Nothing to close";
+    }
+}
+
+void killByProc(){
+    DWORD buffer_size = 65535;
+    std::wstring buffer;
+    buffer.resize(buffer_size);
+    buffer_size = GetEnvironmentVariableW(
+            L"PROC_TO_KILL",
+            &buffer[0],
+            buffer_size
+            );
+    if (!buffer_size){
+        std::cout << "error in getting environment variable\n";
+    }
+    buffer.resize(buffer_size);
+    std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+    std::string args = converter.to_bytes(buffer);
+    char *nextPtr = NULL;
+    char *ptr = strtok_s(&args.front(), ",", &nextPtr);
+    while (ptr != NULL)
+    {
+        killByName(ptr);
+        ptr = strtok_s(NULL, ",", &nextPtr);
     }
 }
 

@@ -1,5 +1,9 @@
-#ifndef LAB__6_KILLER_H
-#define LAB__6_KILLER_H
+//
+// Created by User on 16.11.2022.
+//
+
+#ifndef KILLER_KILLER_H
+#define KILLER_KILLER_H
 
 #include <iostream>
 #include <windows.h>
@@ -9,8 +13,10 @@
 
 void killByProc(std::string PROC_TO_KILL);
 
+void killByProc();
+
 void killByName(std::string name);
 
 void killById(int id);
 
-#endif //LAB__6_KILLER_H
+#endif //KILLER_KILLER_H
