@@ -36,4 +36,18 @@ public class StudentCollection {
     public String[] getAllSubjects(){
         return students.stream().map(Student::getSubject).distinct().sorted(Comparator.naturalOrder()).toArray(String[]::new);
     }
+
+    public String[] getAllSubjectsContainer(){
+        ArrayList<String> resultArr = new ArrayList<>();
+        for(Student t : students){
+            resultArr.add(t.getSubject());
+        }
+        resultArr.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        return resultArr.stream().distinct().toArray(String[]::new);
+    }
 }

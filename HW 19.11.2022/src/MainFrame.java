@@ -48,7 +48,7 @@ public class MainFrame extends JFrame{
     private JMenu getActionMenu(){
         JMenu actionMenu = new JMenu("Action");
         JMenuItem action = new JMenuItem("result");
-        action.addActionListener(e -> resultList.setListData(collection.getAllSubjects()));
+        action.addActionListener(e -> resultList.setListData(collection.getAllSubjectsContainer()));
         actionMenu.add(action);
         return actionMenu;
     }
