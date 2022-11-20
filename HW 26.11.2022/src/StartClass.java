@@ -17,7 +17,7 @@ public class StartClass {
         System.out.println();
 
         Multitude<Integer> second = new Multitude<>();
-        second.add(6);
+        second.add(5);
         second.add(7);
         second.add(8);
         second.add(9);
@@ -35,5 +35,12 @@ public class StartClass {
 
         multitude.addAll(second);
         System.out.println(multitude.toString());
+
+        System.out.println(multitude.unitMultitude(second));
+        System.out.println(multitude.interceptionMultitude(second));
+        System.out.println(multitude.diffMultitude(second));
+
+        multitude.clear();
+        System.out.println(multitude.isEmpty());
     }
 }

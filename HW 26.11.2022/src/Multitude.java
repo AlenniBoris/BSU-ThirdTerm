@@ -1,5 +1,8 @@
 import java.lang.reflect.Member;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Multitude<T> {
     private final ArrayList<T> arrayList;
@@ -72,5 +75,34 @@ public class Multitude<T> {
 
     public void addAll(Multitude<T> second_multitude){
         arrayList.addAll(second_multitude.getArrayList());
+    }
+
+    public List<T> unitMultitude(Multitude<T> second){
+        arrayList.addAll(second.getArrayList());
+        return arrayList.stream().distinct().toList();
+    }
+
+    public List<T> interceptionMultitude(Multitude<T> second){
+        HashSet<T> firstSet = new HashSet<>(arrayList);
+        HashSet<T> secondSet = new HashSet<>(second.getArrayList());
+        List<T> res = new ArrayList<>();
+        for (T element : firstSet){
+            if (secondSet.contains(element)){
+                res.add(element);
+            }
+        }
+        return res;
+    }
+
+    public List<T> diffMultitude(Multitude<T> second){
+        HashSet<T> firstSet = new HashSet<>(arrayList);
+        HashSet<T> secondSet = new HashSet<>(second.getArrayList());
+        List<T> res = new ArrayList<>();
+        for (T element : firstSet){
+            if (!secondSet.contains(element)){
+                res.add(element);
+            }
+        }
+        return res;
     }
 }
