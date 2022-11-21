@@ -42,5 +42,7 @@ public class StartClass {
 
         multitude.clear();
         System.out.println(multitude.isEmpty());
+
+        AppGui appGui = new AppGui();
     }
 }

@@ -1,11 +1,6 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Multitude<T> {
     private final ArrayList<T> arrayList;
@@ -48,7 +43,6 @@ public class Multitude<T> {
         return str.toString();
     }
 
-    // Код итератора начало
     public Iterator getIterator(){
         return new ListIterator();
     }
@@ -66,7 +60,6 @@ public class Multitude<T> {
             return (this.hasNext()) ? arrayList.get(index++) : null;
         }
     }
-    // Код итератора конец
 
     public void add(T element){
         arrayList.add(element);
@@ -107,12 +100,5 @@ public class Multitude<T> {
             }
         }
         return res;
-    }
-
-    public void setFromList(File file) throws FileNotFoundException {
-        Scanner sc = new Scanner(file);
-        while(sc.hasNext()){
-            arrayList.add((T)(sc.next()));
-        }
     }
 }
