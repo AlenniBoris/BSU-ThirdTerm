@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/killer.dir/main.cpp.o CMakeFiles/killer.dir/killer.cpp.o -o killer 
