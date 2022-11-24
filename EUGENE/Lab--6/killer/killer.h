@@ -15,7 +15,7 @@ void killByProc(std::string PROC_TO_KILL);
 
 void killByProc();
 
-void killByName(std::string name);
+void killByName(const char *name);
 
 void killById(int id);
 

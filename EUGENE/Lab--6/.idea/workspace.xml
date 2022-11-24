@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="killer" targetName="killer" />
+    </generated>
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa93344c-1d10-45af-91f9-90131d300997" name="Changes" comment="work from clion, have troubles with work from console(its my problem)" />
+    <list default="true" id="aa93344c-1d10-45af-91f9-90131d300997" name="Changes" comment="work from clion, have troubles with work from console(its my problem)">
+      <change beforePath="$PROJECT_DIR$/.idea/Lab--6.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/killer/killer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/killer/killer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/killer/killer.h" beforeDir="false" afterPath="$PROJECT_DIR$/killer/killer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/user/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -34,9 +50,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../BSU-ThirdTerm" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/killer/CMakeLists.txt" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.cidr.embedded.config" />
+  </component>
+  <component name="RunManager">
+    <configuration name="killer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="killer" TARGET_NAME="killer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="killer" RUN_TARGET_NAME="killer">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -47,6 +75,10 @@
       <option name="presentableId" value="Default" />
       <updated>1668707674547</updated>
       <workItem from="1668707675683" duration="279000" />
+      <workItem from="1669104939708" duration="1011000" />
+      <workItem from="1669184100747" duration="1031000" />
+      <workItem from="1669185746677" duration="1044000" />
+      <workItem from="1669267105845" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="work from clion, have troubles with work from console(its my problem)">
       <created>1668707712843</created>
