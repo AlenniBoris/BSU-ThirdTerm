@@ -14,9 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa93344c-1d10-45af-91f9-90131d300997" name="Changes" comment="work from clion, have troubles with work from console(its my problem)">
-      <change beforePath="$PROJECT_DIR$/user/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/user/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="aa93344c-1d10-45af-91f9-90131d300997" name="Changes" comment="work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +44,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/killer/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab--6--Linux/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -74,6 +72,7 @@
       <workItem from="1669184100747" duration="1031000" />
       <workItem from="1669185746677" duration="1044000" />
       <workItem from="1669267105845" duration="13000" />
+      <workItem from="1669309235466" duration="59000" />
     </task>
     <task id="LOCAL-00001" summary="work from clion, have troubles with work from console(its my problem)">
       <created>1668707712843</created>
@@ -82,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668707712843</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="work">
+      <created>1669309253867</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669309253867</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="work from clion, have troubles with work from console(its my problem)" />
-    <option name="LAST_COMMIT_MESSAGE" value="work from clion, have troubles with work from console(its my problem)" />
+    <MESSAGE value="work" />
+    <option name="LAST_COMMIT_MESSAGE" value="work" />
   </component>
 </project>
