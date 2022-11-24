@@ -22,7 +22,7 @@ int main(int argc, char*argv[]) {
         args.push_back(StringToWString(argv[i]));
     }
 
-    std::string command_line = "../../killer/cmake-build-debug/killer.exe";
+    std::string command_line = "./../../killer/cmake-build-debug/killer.exe";
     for (auto arg : args) {
         command_line += " " + std::string(arg.begin(), arg.end());
     }
