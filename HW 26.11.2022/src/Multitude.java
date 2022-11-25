@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +32,14 @@ public class Multitude<T> {
 
     public boolean equals(Multitude<T> second) {
         return arrayList.equals(second.arrayList);
+    }
+
+    public DefaultListModel listModel(){
+        DefaultListModel listModel = new DefaultListModel<>();
+        for (var el : arrayList){
+            listModel.addElement(el);
+        }
+        return listModel;
     }
 
     @Override

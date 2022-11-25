@@ -8,7 +8,7 @@ public class AppGui extends JFrame {
     private final Multitude<Integer> firstMultitude = new Multitude<>();
     private final Multitude<Integer> secondMultitude = new Multitude<>();
 
-    private final JList<Object> firstList = new JList<>();
+    private final JList<Object> firstList = new JList<>();;
     private final JList<Object> secondList = new JList<>();
     private final JList<Object> unitList = new JList<>();
     private final JList<Object> interceptionList = new JList<>();
