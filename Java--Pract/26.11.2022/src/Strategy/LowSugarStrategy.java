@@ -4,6 +4,9 @@ import Gift.Gift;
 import Interface.GiftStrategy;
 import Sweets.Sweet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LowSugarStrategy implements GiftStrategy {
     private final Gift gift;
 
@@ -20,10 +23,7 @@ public class LowSugarStrategy implements GiftStrategy {
 
     @Override
     public void reduceParameter(String reduceSweet) {
-        for(Sweet sweet : gift.getSweets()){
-            if (sweet.getSweetType().equals(reduceSweet)){
-                gift.delete(sweet);
-            }
-        }
+        List<Sweet> arr = gift.getSweets().stream().filter(el -> !el.getSweetType().equals(reduceSweet)).toList();
+        gift.setSweets(new ArrayList<>(arr));
     }
 }
