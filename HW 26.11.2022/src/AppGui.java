@@ -36,7 +36,7 @@ public class AppGui extends JFrame {
         listPanel.add(secondListPanel);
 
         JPanel unitListPanel = new JPanel();
-        secondListPanel.add(unitList);
+        unitListPanel.add(unitList);
         setScroll(unitList, unitListPanel);
         listPanel.add(unitListPanel);
 
