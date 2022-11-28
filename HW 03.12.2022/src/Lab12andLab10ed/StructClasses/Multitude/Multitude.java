@@ -1,15 +1,12 @@
-package Lab12.task1.StructClasses.Multitude;
+package Lab12andLab10ed.StructClasses.Multitude;
 
-import Lab12.task1.Interfaces.Iterator.Iterator;
-import Lab12.task1.Interfaces.Visitor.VisitedItem;
-import Lab12.task1.Interfaces.Visitor.VisitedProject;
-import Lab12.task1.Interfaces.Visitor.Visitor;
-import Lab12.task1.StructClasses.VisitedItem.Canteen;
-import Lab12.task1.StructClasses.VisitedItem.WebsiteFPMI;
+import Lab12andLab10ed.Interfaces.Iterator.Iterator;
+import Lab12andLab10ed.Interfaces.Visitor.VisitedItem;
+import Lab12andLab10ed.Interfaces.Visitor.VisitedProject;
+import Lab12andLab10ed.Interfaces.Visitor.Visitor;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Formattable;
 import java.util.HashSet;
 import java.util.List;
 
@@ -44,46 +41,25 @@ public class Multitude implements VisitedProject {
         return arrayList.equals(second.arrayList);
     }
 
-    public DefaultListModel listModel(){
-        DefaultListModel listModel = new DefaultListModel<>();
-        for (var el : arrayList){
-            listModel.addElement(el);
-        }
-        return listModel;
-    }
-
     @Override
     public String toString() {
         Iterator iter = getIterator();
         StringBuilder str = new StringBuilder();
-        while (iter.hasNext()){
-            str.append(" ").append(iter.next());
+        while (iter.IsDone()){
+            str.append(" ").append(iter.CurrentItem());
+            iter.Next();
         }
         return str.toString();
     }
 
     public Iterator getIterator(){
-        return new ListIterator();
+        return new ListIterator(this);
     }
 
     @Override
     public void visit(Visitor visitor) {
         for(VisitedItem item : arrayList){
             visitor.visit(item);
-        }
-    }
-
-    private class ListIterator implements Iterator {
-        int index;
-
-        @Override
-        public boolean hasNext() {
-            return index < arrayList.size();
-        }
-
-        @Override
-        public Object next() {
-            return (this.hasNext()) ? arrayList.get(index++) : null;
         }
     }
 

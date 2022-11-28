@@ -1,13 +1,13 @@
-package Lab12.task1;
+package Lab12andLab10ed;
 
-import Lab12.task1.Interfaces.Iterator.Iterator;
-import Lab12.task1.Interfaces.Visitor.VisitedItem;
-import Lab12.task1.StructClasses.Multitude.Multitude;
-import Lab12.task1.StructClasses.VisitedItem.Canteen;
-import Lab12.task1.StructClasses.VisitedItem.WebsiteFPMI;
-import Lab12.task1.StructClasses.Visitor.Dean;
-import Lab12.task1.StructClasses.Visitor.Professor;
-import Lab12.task1.StructClasses.Visitor.Student;
+import Lab12andLab10ed.Interfaces.Iterator.Iterator;
+import Lab12andLab10ed.StructClasses.Multitude.ListIterator;
+import Lab12andLab10ed.StructClasses.Multitude.Multitude;
+import Lab12andLab10ed.StructClasses.VisitedItem.Canteen;
+import Lab12andLab10ed.StructClasses.VisitedItem.WebsiteFPMI;
+import Lab12andLab10ed.StructClasses.Visitor.Dean;
+import Lab12andLab10ed.StructClasses.Visitor.Professor;
+import Lab12andLab10ed.StructClasses.Visitor.Student;
 
 
 public class StartClass {

@@ -4,6 +4,7 @@ import Lab11.task1.InterfaceComponents.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -22,14 +23,9 @@ public class Frame extends JFrame {
         lastKey.setEditable(false);
         add(getKeysPanel());
 
-        addKeyListener(new KeyListener() {
+        addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                keyPanel.addKey(String.valueOf(e.getKeyChar()));
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
                 keyPanel.addKey(String.valueOf(e.getKeyChar()));
             }
 
