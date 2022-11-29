@@ -23,6 +23,6 @@ public class RunClass {
 //
         System.out.println(stack.size());
 //        stack.strategySize(new StrategyIterator(stack));
-        stack.strategySize(new StrategyVisitor(stack, new VisitorPerson()));
+        MainFrame mainFrame = new MainFrame(stack);
     }
 }

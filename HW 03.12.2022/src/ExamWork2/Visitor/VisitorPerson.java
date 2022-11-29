@@ -7,9 +7,8 @@ public class VisitorPerson implements Visitor {
     @Override
     public Integer count(Stack stack) {
         int size = 0;
-        while(stack.size() > 0){
+        for (Integer elem : stack.getElements()){
             ++size;
-            stack.Pop();
         }
         return size;
     }

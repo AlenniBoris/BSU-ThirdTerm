@@ -15,7 +15,6 @@ public class StrategyVisitor implements Strategy {
 
     @Override
     public Integer getSize() {
-        int size = visitStack.beCounted(visitor);
-        return size;
+        return visitStack.beCounted(visitor);
     }
 }

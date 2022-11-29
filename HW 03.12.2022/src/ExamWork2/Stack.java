@@ -31,6 +31,10 @@ public class Stack implements Visited {
         return element;
     }
 
+    public ArrayList<Integer> getElements() {
+        return elements;
+    }
+
     @Override
     public String toString() {
         return "Stack{" +
@@ -38,8 +42,8 @@ public class Stack implements Visited {
                 '}';
     }
 
-    public void strategySize(Strategy strategy){
-        System.out.println(strategy.getSize());
+    public Integer strategySize(Strategy strategy){
+        return strategy.getSize();
     }
 
     @Override
