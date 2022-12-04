@@ -1,4 +1,4 @@
-package Lab12andLab10ed.Interfaces.Iterator;
+package Lab12andLab10ed.Iterator;
 
 public interface Iterator {
     public void First();

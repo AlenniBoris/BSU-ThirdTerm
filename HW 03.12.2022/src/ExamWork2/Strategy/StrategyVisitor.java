@@ -1,7 +1,6 @@
 package ExamWork2.Strategy;
 
-import ExamWork2.Interface.Strategy;
-import ExamWork2.Interface.Visitor;
+import ExamWork2.Visitor.Visitor;
 import ExamWork2.Stack;
 
 public class StrategyVisitor implements Strategy {

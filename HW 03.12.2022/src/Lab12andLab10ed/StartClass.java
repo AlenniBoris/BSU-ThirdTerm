@@ -1,13 +1,10 @@
 package Lab12andLab10ed;
 
-import Lab12andLab10ed.Interfaces.Iterator.Iterator;
-import Lab12andLab10ed.StructClasses.Multitude.ListIterator;
-import Lab12andLab10ed.StructClasses.Multitude.Multitude;
-import Lab12andLab10ed.StructClasses.VisitedItem.Canteen;
-import Lab12andLab10ed.StructClasses.VisitedItem.WebsiteFPMI;
-import Lab12andLab10ed.StructClasses.Visitor.Dean;
-import Lab12andLab10ed.StructClasses.Visitor.Professor;
-import Lab12andLab10ed.StructClasses.Visitor.Student;
+import Lab12andLab10ed.Visitor.Canteen;
+import Lab12andLab10ed.Visitor.WebsiteFPMI;
+import Lab12andLab10ed.Visitor.Dean;
+import Lab12andLab10ed.Visitor.Professor;
+import Lab12andLab10ed.Visitor.Student;
 
 
 public class StartClass {

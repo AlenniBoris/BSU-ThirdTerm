@@ -1,6 +1,6 @@
 package Lab11.task2.GUI;
 
-import Lab11.task2.InterfaceComponents.*;
+import Lab11.task2.Strategy.*;
 import Lab11.task2.Student.*;
 
 import javax.swing.*;

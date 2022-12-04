@@ -1,6 +1,4 @@
-package Lab12andLab10ed.StructClasses.VisitedItem;
-
-import Lab12andLab10ed.Interfaces.Visitor.VisitedItem;
+package Lab12andLab10ed.Visitor;
 
 public class Canteen implements VisitedItem {
     @Override

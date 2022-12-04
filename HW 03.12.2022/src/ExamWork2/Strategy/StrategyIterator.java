@@ -1,7 +1,6 @@
 package ExamWork2.Strategy;
 
-import ExamWork2.Interface.Iterator;
-import ExamWork2.Interface.Strategy;
+import ExamWork2.Iterator.Iterator;
 import ExamWork2.Stack;
 
 public class StrategyIterator implements Strategy {

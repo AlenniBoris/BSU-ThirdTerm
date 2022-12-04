@@ -1,6 +1,6 @@
 package Lab11.task2.Student;
 
-import Lab11.task2.Interface.*;
+import Lab11.task2.Strategy.Strategy;
 
 import java.io.File;
 import java.io.FileNotFoundException;

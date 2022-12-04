@@ -1,6 +1,5 @@
 package ExamWork2.Iterator;
 
-import ExamWork2.Interface.Iterator;
 import ExamWork2.Stack;
 
 public class StackIterator implements Iterator {

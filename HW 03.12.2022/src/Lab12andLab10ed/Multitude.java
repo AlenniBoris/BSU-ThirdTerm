@@ -1,11 +1,11 @@
-package Lab12andLab10ed.StructClasses.Multitude;
+package Lab12andLab10ed;
 
-import Lab12andLab10ed.Interfaces.Iterator.Iterator;
-import Lab12andLab10ed.Interfaces.Visitor.VisitedItem;
-import Lab12andLab10ed.Interfaces.Visitor.VisitedProject;
-import Lab12andLab10ed.Interfaces.Visitor.Visitor;
+import Lab12andLab10ed.Iterator.Iterator;
+import Lab12andLab10ed.Iterator.ListIterator;
+import Lab12andLab10ed.Visitor.VisitedItem;
+import Lab12andLab10ed.Visitor.VisitedProject;
+import Lab12andLab10ed.Visitor.Visitor;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

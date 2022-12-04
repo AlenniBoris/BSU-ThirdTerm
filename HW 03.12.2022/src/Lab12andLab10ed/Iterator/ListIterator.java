@@ -1,6 +1,6 @@
-package Lab12andLab10ed.StructClasses.Multitude;
+package Lab12andLab10ed.Iterator;
 
-import Lab12andLab10ed.Interfaces.Iterator.Iterator;
+import Lab12andLab10ed.Multitude;
 
 public class ListIterator implements Iterator {
     int index;

@@ -1,6 +1,5 @@
-package Lab11.task2.InterfaceComponents;
+package Lab11.task2.Strategy;
 
-import Lab11.task2.Interface.*;
 import Lab11.task2.Student.*;
 
 import java.util.ArrayList;

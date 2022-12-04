@@ -1,4 +1,4 @@
-package ExamWork2.Interface;
+package ExamWork2.Visitor;
 
 public interface Visited {
     public Integer beCounted(Visitor visitor);

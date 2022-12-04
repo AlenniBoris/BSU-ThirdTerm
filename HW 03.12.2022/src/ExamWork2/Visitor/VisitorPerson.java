@@ -1,6 +1,5 @@
 package ExamWork2.Visitor;
 
-import ExamWork2.Interface.Visitor;
 import ExamWork2.Stack;
 
 public class VisitorPerson implements Visitor {

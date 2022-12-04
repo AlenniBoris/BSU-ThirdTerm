@@ -1,4 +1,4 @@
-package ExamWork2.Interface;
+package ExamWork2.Iterator;
 
 public interface Iterator {
     public Object next();
