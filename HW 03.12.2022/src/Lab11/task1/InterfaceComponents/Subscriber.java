@@ -1,6 +1,6 @@
 package Lab11.task1.InterfaceComponents;
 
-import Lab11.task1.Interface.*;
+import Lab11.task1.Observer.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,3 @@
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/ProcessS/cmake-build-debug/CMakeFiles/ProcessS.dir
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/ProcessS/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/ProcessS/cmake-build-debug/CMakeFiles/rebuild_cache.dir

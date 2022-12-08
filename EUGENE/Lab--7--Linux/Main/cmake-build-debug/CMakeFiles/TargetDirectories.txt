@@ -1,0 +1,3 @@
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/Main/cmake-build-debug/CMakeFiles/Main.dir
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/Main/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/borisall/Рабочий стол/HWK_CPP/HW10_12/Main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
