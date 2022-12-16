@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -7,22 +9,11 @@ public class MainFrame extends JFrame{
 
     private final DefaultListModel<String> listModel = new DefaultListModel<>();
     private final JList<String> dataList = new JList<>(listModel);
-    private final JList<String> resultList = new JList<>(listModel);
+    private final JList<String> listSAX = new JList<>(listModel);
+    private final JList<String> listDOM = new JList<>(listModel);
 
     private JFileChooser fileChooser;
     private final StudentCollection collection = new StudentCollection();
-
-    private JButton getAddBtn(){
-        JButton addBtn = new JButton("Add");
-        addBtn.addActionListener(e -> {
-            String str = JOptionPane.showInputDialog("Enter your student in such format: Number of gradebook,surname,subject,grade");
-            String[] arr = str.split(",");
-            collection.add(new Student(Integer.parseInt(arr[0]), arr[1], arr[2], Integer.parseInt(arr[3])));
-            dataList.setListData(collection.getStudents());
-            resultList.setListData(new String[0]);
-        });
-        return addBtn;
-    }
 
     private JMenu getFileMenu(){
         JMenu fileMenu = new JMenu("Load");
@@ -42,21 +33,48 @@ public class MainFrame extends JFrame{
             }
         });
         fileMenu.add(load);
+
+        JMenuItem saveToXML = new JMenuItem("Save to XML");
+        saveToXML.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                collection.saveToXML();
+            }
+        });
+        fileMenu.add(saveToXML);
+
         return fileMenu;
     }
 
-    private JMenu getActionMenu(){
-        JMenu actionMenu = new JMenu("Action");
-        JMenuItem action = new JMenuItem("result");
-        action.addActionListener(e -> resultList.setListData(collection.getAllSubjectsContainer()));
-        actionMenu.add(action);
-        return actionMenu;
+    private JMenu getReadMenu(){
+        JMenu readXmlMenu = new JMenu("Read");
+
+        JMenuItem saxItem = new JMenuItem("SAX");
+        saxItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listSAX.setListData(collection.getBySAX());
+            }
+        });
+        readXmlMenu.add(saxItem);
+
+        JMenuItem domItem = new JMenuItem("DOM");
+        domItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listDOM.setListData(collection.getByDOM());
+            }
+        });
+        readXmlMenu.add(domItem);
+
+        return readXmlMenu;
     }
+
 
     private JMenuBar getBar(){
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(getFileMenu());
-        menuBar.add(getActionMenu());
+        menuBar.add(getReadMenu());
         return menuBar;
     }
 
@@ -68,11 +86,10 @@ public class MainFrame extends JFrame{
 
         setJMenuBar(getBar());
 
-        JPanel listPanel = new JPanel(new GridLayout(1, 2));
+        JPanel listPanel = new JPanel(new GridLayout(1, 3));
         listPanel.add(dataList);
-        listPanel.add(resultList);
+        listPanel.add(listSAX);
+        listPanel.add(listDOM);
         add(listPanel);
-
-        add(getAddBtn(), BorderLayout.SOUTH);
     }
 }

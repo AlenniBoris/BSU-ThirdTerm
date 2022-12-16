@@ -9,54 +9,58 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class XMLRead {
-    public static void readUsingSAX(){
+    public static String[] readUsingSAX(){
+        ArrayList<String> strings = new ArrayList<>();
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
 
             DefaultHandler handler = new DefaultHandler(){
                 boolean bGradebook = false, bSurname, bSubject = false, bGrade = false;
+                StringBuilder sb  =new StringBuilder();
 
                 public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
-                    System.out.println("Start element = " + qName);
                     if (qName.equals("gradebook")) bGradebook = true;
                     if (qName.equals("surname")) bSurname = true;
                     if (qName.equals("subject")) bSubject = true;
                     if (qName.equals("grade")) bGrade = true;
                 }
 
-                public void endElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
-                    System.out.println("Start element = " + qName);
-                }
-
                 public void characters(char[] ch, int start, int length) throws SAXException{
                     if (bGradebook){
-                        System.out.println("Gradebook = " + new String(ch, start, length));
+                        sb.append("Gradebook = ").append(new String(ch, start, length));
                         bGradebook = false;
                     }
                     if (bSurname){
-                        System.out.println("Surname = " + new String(ch, start, length));
+                        sb.append("Surname = ").append(new String(ch, start, length));
                         bSurname = false;
                     }
                     if (bSubject){
-                        System.out.println("Subject = " + new String(ch, start, length));
+                        sb.append("Subject = ").append(new String(ch, start, length));
                         bSubject = false;
                     }
                     if (bGrade){
-                        System.out.println("Grade = " + new String(ch, start, length));
+                        sb.append("Grade = ").append(new String(ch, start, length));
                         bGrade = false;
                     }
+
+                    strings.add(sb.toString());
                 }
+
             };
+
             parser.parse("file.xml", handler);
         }catch (Exception exception){
             exception.getStackTrace();
         }
+        return strings.toArray(new String[0]);
     }
 
-    public static void readUsingDOM(){
+    public static String[] readUsingDOM(){
+        ArrayList<String> strings = new ArrayList<>();
         try{
             File file = new File("file.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -68,15 +72,15 @@ public class XMLRead {
                 Node node = nodeList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) node;
-                    System.out.print("Gradebook = " + eElement.getElementsByTagName("gradebook").item(0).getTextContent() + " ");
-                    System.out.print("Surname = " + eElement.getElementsByTagName("surname").item(0).getTextContent() + " ");
-                    System.out.print("Subject = " + eElement.getElementsByTagName("subject").item(0).getTextContent() + " ");
-                    System.out.print("Grade = " + eElement.getElementsByTagName("grade").item(0).getTextContent() + " ");
+                    strings.add("Gradebook = " + eElement.getElementsByTagName("gradebook").item(0).getTextContent() + " " +
+                    "Surname = " + eElement.getElementsByTagName("surname").item(0).getTextContent() + " " +
+                    "Subject = " + eElement.getElementsByTagName("subject").item(0).getTextContent() + " " +
+                    "Grade = " + eElement.getElementsByTagName("grade").item(0).getTextContent() + " ");
                 }
-                System.out.println();
             }
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
+        return strings.toArray(new String[0]);
     }
 }

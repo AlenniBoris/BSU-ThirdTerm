@@ -6,9 +6,9 @@ public class Main {
         MainFrame a = new MainFrame();
         StudentCollection collection = new StudentCollection();
         collection.setStudentsFromFile(new File("students"));
-        XMLSave.saveToXML(collection);
-        XMLRead.readUsingSAX();
-        System.out.println();
-        XMLRead.readUsingDOM();
+//        XMLSave.saveToXML(collection);
+//        XMLRead.readUsingSAX();
+//        System.out.println();
+//        XMLRead.readUsingDOM();
     }
 }

@@ -40,6 +40,8 @@ int main()
                             1024 * 16,
                                  NMPWAIT_USE_DEFAULT_WAIT,
                                  NULL);
+
+
     while (handlePIPE != INVALID_HANDLE_VALUE)
     {
         if (ConnectNamedPipe(handlePIPE, NULL) != FALSE)   // wait for someone to connect to the pipe

@@ -52,4 +52,16 @@ public class StudentCollection {
         });
         return resultArr.stream().distinct().toArray(String[]::new);
     }
+
+    public void saveToXML(){
+        XMLSave.saveToXML(this);
+    }
+
+    public String[] getBySAX(){
+        return XMLRead.readUsingSAX();
+    }
+
+    public String[] getByDOM(){
+        return XMLRead.readUsingDOM();
+    }
 }

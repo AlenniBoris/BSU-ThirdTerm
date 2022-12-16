@@ -18,6 +18,4 @@ public class Security extends Employee{
         return "Surname =" + getSurname() + " Business = " + getOrganization() + " Coefficient = " + getWorkCoefficient() +
                 " Sequeredd square = " + securedSquare + " Base = " + BASE + "\n";
     }
-
-
 }
