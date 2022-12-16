@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Students>
+    <Student>
+        <gradebook>1</gradebook>
+        <surname>alennikov</surname>
+        <subject>maths</subject>
+        <grade>2</grade>
+    </Student>
+    <Student>
+        <gradebook>2</gradebook>
+        <surname>gatalski</surname>
+        <subject>oti</subject>
+        <grade>3</grade>
+    </Student>
+    <Student>
+        <gradebook>3</gradebook>
+        <surname>videvich</surname>
+        <subject>osi</subject>
+        <grade>4</grade>
+    </Student>
+    <Student>
+        <gradebook>4</gradebook>
+        <surname>bashko</surname>
+        <subject>osi</subject>
+        <grade>7</grade>
+    </Student>
+    <Student>
+        <gradebook>5</gradebook>
+        <surname>panulin</surname>
+        <subject>algebra</subject>
+        <grade>5</grade>
+    </Student>
+</Students>
