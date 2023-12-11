@@ -9,8 +9,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame{
     public MainFrame(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500,500);
-        setVisible(true);
+
 
         Multitude multitude = new Multitude();
         View view = new View(multitude);

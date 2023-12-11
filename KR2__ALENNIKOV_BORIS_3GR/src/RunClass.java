@@ -30,6 +30,8 @@ public class RunClass {
         System.out.println(multitude.cardinality(new StrategyIterator(multitude)));
 
         MainFrame frame = new MainFrame();
+        frame.setSize(500,500);
+        frame.setVisible(true);
     }
 }
 
